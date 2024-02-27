@@ -49,5 +49,33 @@ public class Delivery {
     @OneToMany(mappedBy = "deliveries",cascade = CascadeType.REMOVE,fetch = FetchType.EAGER)
     private Set<DishToDelivery> dishesDeliveries;
 
+    public int getDistance(Delivery d){
+    //d = √(x2 − x1)^2 + (y2 − Y1)^2
+        int deltaX = d.getRestaurant().getPositionX() - d.getUser().getPositionX();
+        int deltaY = d.getRestaurant().getPositionY() - d.getUser().getPositionY();
+        return (int) Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+    }
+
+    public double getDishesPrice(Delivery d){
+    // getDishesPrice() = ∑ getPrice()
+        if(d.getDishesDeliveries()==null)
+        return 0;
+
+        double res = 0;
+        for(DishToDelivery dtd: d.getDishesDeliveries())
+            res+=dtd.getPrice(dtd);
+
+        return res;
+    }
+    
+    public double getRiderRevenue(Delivery d){
+    // getriderevenue() = deliverypriceperunit x distance(getdistance)
+        return d.getRestaurant().getDeliveryPricePerUnit() * d.getDistance();
+    }
+
+    public double getTotalPrice(Delivery d){
+    // gettotalprice() = getdishesprice+getriderrevenue()
+        return d.getDishesPrice(d) + d.getRiderRevenue(d);
+    }
 
 }

@@ -42,4 +42,9 @@ public class DishToDelivery {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
+ 
+    public double getPrice(DishToDelivery dtd){
+    // getPrice() = price x quantity
+        return dtd.getQuantity()*dtd.getDish().getPrice();
+    }
 }

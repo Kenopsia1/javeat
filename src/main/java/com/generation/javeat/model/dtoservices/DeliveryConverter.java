@@ -7,7 +7,6 @@ import com.generation.javeat.model.dto.delivery.DeliveryDtoR;
 import com.generation.javeat.model.dto.delivery.DeliveryDtoWFull;
 import com.generation.javeat.model.entities.Delivery;
 import com.generation.javeat.model.repositories.DeliveryRepository;
-
 @Service
 public class DeliveryConverter {
     
@@ -41,5 +40,4 @@ public class DeliveryConverter {
                 .build();
     }
 
-    
 }
