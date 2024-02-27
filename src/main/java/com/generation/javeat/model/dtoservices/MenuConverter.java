@@ -12,7 +12,7 @@ public class MenuConverter {
     @Autowired
     MenuRepository mRepo;
 
-    public Menu dtoRToPerson(MenuDtoR dto){
+    public Menu dtoRToMenu(MenuDtoR dto){
         // private int id;
         return  Menu
                 .builder()
@@ -20,7 +20,7 @@ public class MenuConverter {
                 .build();
     }
 
-    public MenuDtoWFull personToDtoWFull(Menu m){
+    public MenuDtoWFull menuToDtoWFull(Menu m){
         // private Set<Dish> dishes;
         // private Restaurant restaurant;
         return  MenuDtoWFull
