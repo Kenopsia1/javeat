@@ -12,8 +12,7 @@ public class DishConverter {
     @Autowired
     DishRepository dRepo;
 
-    public Dish dtoRToPerson(DishDtoR dto)//R
-    {
+    public Dish dtoRToPerson(DishDtoR dto){
         // private int id;
         // private String name;
         // private String category;
@@ -27,8 +26,7 @@ public class DishConverter {
                 .build();
     }
 
-    public DishDtoWFull personToDtoWFull(Dish d)
-    {
+    public DishDtoWFull personToDtoWFull(Dish d){
         // private Set<DishToDelivery> deliveries;
         // private List<String> ingredients;
         // private Menu menu;
