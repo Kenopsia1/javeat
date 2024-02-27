@@ -29,13 +29,13 @@ import lombok.ToString;
 @NoArgsConstructor
 @Builder
 public class Dish {
-    //id int
-    //name string
-    //category string
-    //ingredients List String
-    //price double
-    //deliveries SetDishToDelivery
-    //menu menu
+    // id int
+    // name string
+    // category string
+    // ingredients List String
+    // price double
+    // deliveries SetDishToDelivery
+    // menu menu
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -45,14 +45,13 @@ public class Dish {
     private double price;
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
-        @CollectionTable(name = "foodTypes", joinColumns = @JoinColumn(name = "restauran_id"))
-        @Column(name = "restaurant", nullable = false)
+    @CollectionTable(name = "foodTypes", joinColumns = @JoinColumn(name = "restauran_id"))
+    @Column(name = "restaurant", nullable = false)
     private List<String> ingredients;
-
 
     @JsonIgnore
     @OneToMany(mappedBy = "dishtodeliver", fetch = FetchType.EAGER)
-    private Set<DishToDelivery> dishToDeliver = new HashSet<>();
+    private Set<DishToDelivery> dishToDelivery;
 
     @JsonIgnore
     @ToString.Exclude

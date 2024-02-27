@@ -34,7 +34,7 @@ public class Menu {
 
     @JsonIgnore
     @OneToMany(mappedBy = "dishes", fetch = FetchType.EAGER)
-    private Set<Dish> dishes = new HashSet<>();
+    private Set<Dish> dishes;
 
     @JsonIgnore
     @ToString.Exclude
