@@ -17,7 +17,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @EqualsAndHashCode(callSuper=false)
-public class DeliveryDtoWFull {
+public class DeliveryDtoWFull extends DeliveryDtoBase {
 
     private User user;
     private Restaurant restaurant;
