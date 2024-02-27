@@ -11,8 +11,8 @@ import com.generation.javeat.model.repositories.DishToDeliveryRepository;
 public class DishToDeliveryConverter {
     @Autowired
     DishToDeliveryRepository dtdRepo;
-    
-        public DishToDelivery dtoRToPerson(DishToDeliveryDtoR dto)//R
+
+    public DishToDelivery dtoRToPerson(DishToDeliveryDtoR dto)
     {
         // private int id;
         // private int quantity;
@@ -23,16 +23,16 @@ public class DishToDeliveryConverter {
                 .build();
     }
 
-    public DishToDeliveryDtoWFull personToDtoWFull(DishToDelivery d)
+    public DishToDeliveryDtoWFull personToDtoWFull(DishToDelivery dtd)
     {
         // private Dish dish;
         // private Delivery delivery;
         return  DishToDeliveryDtoWFull
                 .builder()
-                .id(d.getId())
-                .quantity(d.getQuantity())
-                .dish(d.getDish())
-                .delivery(d.getDelivery())
+                .id(dtd.getId())
+                .quantity(dtd.getQuantity())
+                .dish(dtd.getDish())
+                .delivery(dtd.getDelivery())
                 .build();
     }
 }
