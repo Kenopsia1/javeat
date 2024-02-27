@@ -1,6 +1,5 @@
 package com.generation.javeat.entities;
 
-import java.util.HashSet;
 import java.util.Set;
 import java.util.List;
 
@@ -52,7 +51,7 @@ public class Dish {
 
     @JsonIgnore
     @OneToMany(mappedBy = "dishtodeliver", fetch = FetchType.EAGER)
-    private Set<DishToDelivery> dishToDeliver = new HashSet<>();
+    private Set<DishToDelivery> dishToDeliver;
 
     @JsonIgnore
     @ToString.Exclude

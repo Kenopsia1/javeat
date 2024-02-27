@@ -1,6 +1,5 @@
 package com.generation.javeat.entities;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -34,7 +33,7 @@ public class Menu {
 
     @JsonIgnore
     @OneToMany(mappedBy = "dishes", fetch = FetchType.EAGER)
-    private Set<Dish> dishes = new HashSet<>();
+    private Set<Dish> dishes;
 
     @JsonIgnore
     @ToString.Exclude
