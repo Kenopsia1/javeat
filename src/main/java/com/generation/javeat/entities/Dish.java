@@ -1,9 +1,8 @@
 package com.generation.javeat.entities;
 
-import java.util.ArrayList;
-
-import org.hibernate.mapping.List;
-import org.hibernate.mapping.Set;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -48,12 +47,12 @@ public class Dish {
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
         @CollectionTable(name = "foodTypes", joinColumns = @JoinColumn(name = "restauran_id"))
         @Column(name = "restaurant", nullable = false)
-    private List<String> ingredients = new ArrayList<>();
+    private List<String> ingredients;
 
 
     @JsonIgnore
     @OneToMany(mappedBy = "dishtodeliver", fetch = FetchType.EAGER)
-    private Set<DishToDelivery> postedQuests;
+    private Set<DishToDelivery> dishToDeliver = new HashSet<>();
 
     @JsonIgnore
     @ToString.Exclude
