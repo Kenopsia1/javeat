@@ -9,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class RestaurantDtoBase {
+public abstract class RestaurantDtoBase {
 
     private Integer id;
     private String phone, imgUrl;

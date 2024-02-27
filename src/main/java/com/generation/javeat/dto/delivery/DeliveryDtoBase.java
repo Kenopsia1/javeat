@@ -11,7 +11,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class DeliveryDtoBase {
+public abstract class DeliveryDtoBase {
 
     private Integer id;
     private Date expected_arrival;
