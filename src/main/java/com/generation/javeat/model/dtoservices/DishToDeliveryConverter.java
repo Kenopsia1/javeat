@@ -12,8 +12,7 @@ public class DishToDeliveryConverter {
     @Autowired
     DishToDeliveryRepository dtdRepo;
 
-    public DishToDelivery dtoRToPerson(DishToDeliveryDtoR dto)
-    {
+    public DishToDelivery dtoRToPerson(DishToDeliveryDtoR dto){
         // private int id;
         // private int quantity;
         return  DishToDelivery
@@ -23,8 +22,7 @@ public class DishToDeliveryConverter {
                 .build();
     }
 
-    public DishToDeliveryDtoWFull personToDtoWFull(DishToDelivery dtd)
-    {
+    public DishToDeliveryDtoWFull personToDtoWFull(DishToDelivery dtd){
         // private Dish dish;
         // private Delivery delivery;
         return  DishToDeliveryDtoWFull
