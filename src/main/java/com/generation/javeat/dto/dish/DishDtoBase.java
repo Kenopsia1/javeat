@@ -8,7 +8,7 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class DishDtoBase {
+public abstract class DishDtoBase {
     private int id;
     private String name;
     private String category;

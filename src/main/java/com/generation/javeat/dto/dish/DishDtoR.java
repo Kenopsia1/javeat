@@ -6,6 +6,6 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper=false)
 @Data
 @SuperBuilder
-public class DishDtoR extends DishDtoBaseFull{
+public class DishDtoR extends DishDtoBase{
     public DishDtoR(){};
 }

@@ -8,6 +8,6 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public class MenuDtoBase {
+public abstract class MenuDtoBase {
     private int id;
 }

@@ -16,7 +16,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 @EqualsAndHashCode(callSuper=false)
-public class DishDtoBaseFull extends DishDtoBase{
+public abstract class DishDtoWFull extends DishDtoBase{
     private Set<DishToDelivery> deliveries;
     private List<String> ingredients;
     private Menu menu;

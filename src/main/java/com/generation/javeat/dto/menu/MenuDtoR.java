@@ -7,6 +7,6 @@ import lombok.experimental.SuperBuilder;
 @EqualsAndHashCode(callSuper=false)
 @Data
 @SuperBuilder
-public class MenuDtoR extends MenuDToBaseFull{
+public class MenuDtoR extends MenuDtoBase{
     public MenuDtoR(){};
 }
