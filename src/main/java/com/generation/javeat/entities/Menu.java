@@ -1,15 +1,10 @@
 package com.generation.javeat.entities;
 
-import java.util.ArrayList;
-
-import org.hibernate.mapping.List;
-import org.hibernate.mapping.Set;
+import java.util.HashSet;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CollectionTable;
-import jakarta.persistence.Column;
-import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -39,7 +34,7 @@ public class Menu {
 
     @JsonIgnore
     @OneToMany(mappedBy = "dishes", fetch = FetchType.EAGER)
-    private Set<Dish> dishes;
+    private Set<Dish> dishes = new HashSet<>();
 
     @JsonIgnore
     @ToString.Exclude
