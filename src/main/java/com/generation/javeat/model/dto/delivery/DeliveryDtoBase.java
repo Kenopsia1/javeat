@@ -17,4 +17,5 @@ public abstract class DeliveryDtoBase {
     private Date expected_arrival;
     private int distance;
     private String paymentMethod, notes;
+    
 }

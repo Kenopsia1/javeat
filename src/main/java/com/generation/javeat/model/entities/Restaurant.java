@@ -37,6 +37,8 @@
 
         private int openingHour, closingHour, positionX, positionY, maxDeliveryDistance;
 
+        private Double deliveryPricePerUnit;
+
         @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
         @CollectionTable(name = "foodTypes", joinColumns = @JoinColumn(name = "restauran_id"))
         @Column(name = "restaurant", nullable = false)

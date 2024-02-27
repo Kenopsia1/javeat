@@ -26,6 +26,7 @@ public class RestaurantConverter {
                 .positionX(dto.getPositionX())
                 .positionY(dto.getPositionY())
                 .maxDeliveryDistance(dto.getMaxDeliveryDistance())
+                .deliveryPricePerUnit(dto.getDeliveryPricePerUnit())
                 .build();
     }
 
@@ -41,6 +42,7 @@ public class RestaurantConverter {
                 .positionX(r.getPositionX())
                 .positionY(r.getPositionY())
                 .maxDeliveryDistance(r.getMaxDeliveryDistance())
+                .deliveryPricePerUnit(r.getDeliveryPricePerUnit())
                 .foodTypes(r.getFoodTypes())
                 .deliveries(r.getDeliveries())
                 .menu(r.getMenu())
