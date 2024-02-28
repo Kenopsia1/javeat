@@ -74,7 +74,7 @@ public class DeliveryController {
         // Converti il DTO in un'entità delivery
         Delivery newDeliverys = deConv.dtoWFullToDelivery(dto);
         // Salva il nuovo utente nel database
-        Delivery savedDeliveryr = deRepo.save(newDeliverys);
+        Delivery savedDelivery = deRepo.save(newDeliverys);
 
         // Converte l'entità salvata in un DTO da restituire come risposta
         //DeliveryDtoWFull savedDeliveryDto = rConv.DeliveryToDtoWFull(savedDelivery);
