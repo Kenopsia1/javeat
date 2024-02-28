@@ -73,6 +73,7 @@ public class MenuController {
         // Converti il DTO in un'entità menu
         Menu newmenus = mConv.dtoWFullToDMenu(dto);
         // Salva il nuovo utente nel database
+        @SuppressWarnings("unused")
         Menu savedmenu = mRepo.save(newmenus);
 
         // Converte l'entità salvata in un DTO da restituire come risposta
