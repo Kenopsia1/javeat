@@ -1,6 +1,5 @@
 package com.generation.javeat.model.entities;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.Set;
 

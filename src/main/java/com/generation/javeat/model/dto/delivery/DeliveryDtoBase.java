@@ -1,6 +1,5 @@
 package com.generation.javeat.model.dto.delivery;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
