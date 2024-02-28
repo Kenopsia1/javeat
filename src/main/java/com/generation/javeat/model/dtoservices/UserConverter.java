@@ -49,4 +49,22 @@ public class UserConverter {
                 .build();
 
     }
+
+    /**
+     * Converte un DTO UserDtoWFull in un'entità User.
+     * 
+     * @param dto - Il DTO UserDtoWFull da convertire.
+     * @return User - L'entità User risultante dalla conversione.
+     */
+    public User dtoWFullToUser(UserDtoWFull dto) {
+        User user = new User();
+        user.setMail(dto.getMail());
+        user.setPassword(dto.getPassword());
+        user.setPhone(dto.getPhone());
+        user.setPositionX(dto.getPositionX());
+        user.setPositionY(dto.getPositionY());
+        // Altri campi dell'entità User che potresti voler impostare
+
+        return user;
+    }
 }

@@ -61,16 +61,31 @@ public class UserContoller {
     }
 
     /**
-     * POST /users/add
-     * Controlla la presenza di un user nel db.
+     * POST /users/register
+     * Registra un nuovo utente nel sistema.
      * 
-     * @return UserFull - L'entità User salvata nel database.
+     * @param dto - Il DTO contenente i dettagli del nuovo utente.
+     * @return ResponseEntity - Risposta HTTP con il DTO dell'utente appena creato.
      */
-    @PostMapping("/users/add")
-    public User insert(@RequestBody User u) 
-    {
-        return uRepo.save(uConv.userToDtoWFull(u));
+    @PostMapping("/users/register")
+    public ResponseEntity<?> registerUser(@RequestBody UserDtoWFull dto) {
+        // Verifica se l'utente già esiste nel database in base all'indirizzo email
+        if (uRepo.existsByMail(dto.getMail())) {
+            return new ResponseEntity<String>("Email già registrata. Scegli un'altra email.", HttpStatus.BAD_REQUEST);
+        }
+
+        // Converti il DTO in un'entità User
+        User newUser = uConv.dtoWFullToUser(dto);
+
+        // Salva il nuovo utente nel database
+        User savedUser = uRepo.save(newUser);
+
+        // Converte l'entità salvata in un DTO da restituire come risposta
+        UserDtoWFull savedUserDto = uConv.userToDtoWFull(savedUser);
+
+        // Restituisci la risposta con lo status HTTP 201 Created e il DTO dell'utente appena creato
+        return new ResponseEntity<>(savedUserDto, HttpStatus.CREATED);
     }
 
-
+    
 }
