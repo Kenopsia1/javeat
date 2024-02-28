@@ -10,7 +10,7 @@ import com.generation.javeat.model.repositories.RestaurantRepository;
 public class RestaurantController {
     
     @Autowired
-    RestaurantConverter dtdConv;
+    RestaurantConverter rConv;
     @Autowired
-    RestaurantRepository dtdRepo;
+    RestaurantRepository rRepo;
 }

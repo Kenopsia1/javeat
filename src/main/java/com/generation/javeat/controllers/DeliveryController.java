@@ -10,7 +10,7 @@ import com.generation.javeat.model.repositories.MenuRepository;
 public class DeliveryController {
     
     @Autowired
-    MenuConverter mConv;
+    MenuConverter deConv;
     @Autowired
-    MenuRepository mRepo;
+    MenuRepository deRepo;
 }

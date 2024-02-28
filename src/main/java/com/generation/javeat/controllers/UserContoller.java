@@ -18,18 +18,4 @@ public class UserContoller {
     UserConverter uConv;
     @Autowired
     UserRepository uRepo;
-
-    /**
-     * GET /people
-     * Restituisce una lista di persone senza i loro documenti.
-     * 
-     * @return List<PersonDtoWNoDocuments> - Lista di DTO delle persone senza documenti.
-     */
-    @GetMapping("/userlogin")
-    public List<PersonDtoWNoDocuments> getAllPeopleNoDocuments() {
-        return repo.findAll()
-                .stream()
-                .map(conv::personToDtoWNoDocuments)
-                .toList();
-    }
-
+}
