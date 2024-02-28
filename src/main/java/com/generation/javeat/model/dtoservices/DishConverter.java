@@ -41,4 +41,18 @@ public class DishConverter {
                 .menu(e.getMenu())
                 .build();
     }
+
+    /**
+     * Converte un DTO dishDtoWFull in un'entità dish.
+     * 
+     * @param dto - Il DTO dishDtoWFull da convertire.
+     * @return dish - L'entità dish risultante dalla conversione.
+     */
+    public Dish dtoWFullToDish(DishDtoWFull dto) {
+        Dish dish = new Dish();
+        dish.setName(dto.getName());
+        dish.setCategory(dto.getCategory());
+        dish.setPrice(dto.getPrice());
+        return dish;
+    }
 }

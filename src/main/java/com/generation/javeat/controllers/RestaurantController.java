@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.generation.javeat.model.dto.restaurant.RestaurantDtoR;
 import com.generation.javeat.model.dto.restaurant.RestaurantDtoWFull;
-import com.generation.javeat.model.dto.user.UserDtoR;
 import com.generation.javeat.model.dtoservices.RestaurantConverter;
 import com.generation.javeat.model.entities.Restaurant;
 import com.generation.javeat.model.repositories.RestaurantRepository;
@@ -50,7 +50,7 @@ public class RestaurantController {
      * @return ResponseEntity - Risposta HTTP e messaggio di conferma della creazione.
      */
     @PostMapping("/restaurants/register")
-    public ResponseEntity<?> registerUser(@RequestBody RestaurantDtoWFull dto) {
+    public ResponseEntity<?> registerRestaurant(@RequestBody RestaurantDtoWFull dto) {
         
         // Converti il DTO in un'entità Restaurant
         Restaurant newRestaurants = rConv.dtoWFullToRestaurant(dto);
@@ -65,14 +65,14 @@ public class RestaurantController {
 
     /**
      * PUT /restaurants/{id}
-     * Aggiorna i dati di un user nel database.
+     * Aggiorna i dati di un restaurant nel database.
      * 
      * @param dto I nuovi dati del restaurant.
      * @param id L'ID del restaurant da aggiornare.
      * @return RestaurantDtoWFull - DTO aggiornato del restaurant completa.
      */
     @PutMapping("/restaurants/{id}")
-    public RestaurantDtoWFull updateRestaurant(@RequestBody UserDtoR dto, @PathVariable Integer id) {
+    public RestaurantDtoWFull updateRestaurant(@RequestBody RestaurantDtoR dto, @PathVariable Integer id) {
         Restaurant restaurant = rRepo.findById(id).orElseThrow();
 
         // Aggiorna i dati del restaurant qui
@@ -85,7 +85,7 @@ public class RestaurantController {
      * DELETE /restaurants/{id}
      * Elimina un restaurant dal database basato sull'ID fornito.
      * 
-     * @param id L'ID del'user da eliminare.
+     * @param id L'ID del restaurant da eliminare.
      * @return ResponseEntity - Risposta HTTP e messaggio di conferma dell'eliminazione.
      */
     @DeleteMapping("/restaurants/{id}")
