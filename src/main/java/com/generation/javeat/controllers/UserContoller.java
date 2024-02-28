@@ -10,7 +10,7 @@ import com.generation.javeat.model.repositories.UserRepository;
 public class UserContoller {
     
     @Autowired
-    UserConverter dtdConv;
+    UserConverter uConv;
     @Autowired
-    UserRepository dtdRepo;
+    UserRepository uRepo;
 }
