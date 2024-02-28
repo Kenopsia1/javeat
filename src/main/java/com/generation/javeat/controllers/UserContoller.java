@@ -25,6 +25,12 @@ public class UserContoller {
     @Autowired
     UserRepository uRepo;
 
+    /**
+     * Get /users
+      * Restituisce una lista di users completa.
+     * 
+     * @return AllUsers - L'entità Users salvate nel database.
+     */
     @GetMapping("/users")
     public List<UserDtoWFull> getAllUsers() 
     {
@@ -34,6 +40,12 @@ public class UserContoller {
                .toList();
     }
 
+    /**
+     * POST /users/login
+     * Controlla la presenza di un user nel db.
+     * 
+     * @return UserFull - L'entità User salvata nel database.
+     */
     @PostMapping("/users/login")
     public ResponseEntity<?> login(@RequestBody UserDtoLogin dto ){
         Optional<User> optUser = uRepo.login(dto.getMail(), dto.getPassword());
