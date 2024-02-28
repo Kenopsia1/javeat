@@ -9,14 +9,17 @@ import com.generation.javeat.model.entities.Dish;
 import com.generation.javeat.model.repositories.DishRepository;
 @Service
 public class DishConverter {
+    
     @Autowired
     DishRepository dRepo;
 
+    /**
+     * Converte un DTO in un oggetto di tipo Dish.
+     * 
+     * @param dto - L'oggetto DishDtoR da convertire.
+     * @return Dish - L'entità Dish risultante dalla conversione.
+     */
     public Dish dtoRToDish(DishDtoR dto){
-        // private int id;
-        // private String name;
-        // private String category;
-        // private double price;
         return  Dish
                 .builder()
                 .id(dto.getId())
@@ -26,10 +29,13 @@ public class DishConverter {
                 .build();
     }
 
+    /**
+     * Converte un Dish in un oggetto DishDtoWFull.
+     * 
+     * @param e - L'oggetto Dish da convertire.
+     * @return DishDtoWFull - L'entità DishDtoWFull risultante dalla conversione.
+     */
     public DishDtoWFull dishToDtoWFull(Dish e){
-        // private Set<DishToDelivery> deliveries;
-        // private List<String> ingredients;
-        // private Menu menu;
         return  DishDtoWFull
                 .builder()
                 .id(e.getId())
@@ -43,16 +49,16 @@ public class DishConverter {
     }
 
     /**
-     * Converte un DTO dishDtoWFull in un'entità dish.
+     * Converte un DTO DishDtoWFull in un'entità Dish.
      * 
-     * @param dto - Il DTO dishDtoWFull da convertire.
-     * @return dish - L'entità dish risultante dalla conversione.
+     * @param dto - Il DTO DishDtoWFull da convertire.
+     * @return Dish - L'entità Dish risultante dalla conversione.
      */
     public Dish dtoWFullToDish(DishDtoWFull dto) {
-        Dish dish = new Dish();
-        dish.setName(dto.getName());
-        dish.setCategory(dto.getCategory());
-        dish.setPrice(dto.getPrice());
-        return dish;
-    }
+        return new Dish() {{
+                    setName(dto.getName());
+                    setCategory(dto.getCategory());
+                    setPrice(dto.getPrice());
+                }};
+    };
 }

@@ -29,14 +29,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Dish {
-    // id int
-    // name string
-    // category string
-    // ingredients List String
-    // price double
-    // deliveries SetDishToDelivery
-    // menu menu
+public class Dish {   
+     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

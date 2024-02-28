@@ -9,12 +9,17 @@ import com.generation.javeat.model.entities.DishToDelivery;
 import com.generation.javeat.model.repositories.DishToDeliveryRepository;
 @Service
 public class DishToDeliveryConverter {
+
     @Autowired
     DishToDeliveryRepository dtdRepo;
 
+    /**
+     * Converte un DTO in un oggetto di tipo DishToDelivery.
+     * 
+     * @param dto - L'oggetto DishToDeliveryDtoR da convertire.
+     * @return DishToDelivery - L'entità DishToDelivery risultante dalla conversione.
+     */
     public DishToDelivery dtoRToDishToDelivery(DishToDeliveryDtoR dto){
-        // private int id;
-        // private int quantity;
         return  DishToDelivery
                 .builder()
                 .id(dto.getId())
@@ -22,9 +27,13 @@ public class DishToDeliveryConverter {
                 .build();
     }
 
+    /**
+     * Converte un DishToDelivery in un oggetto DishToDeliveryDtoWFull.
+     * 
+     * @param e - L'oggetto DishToDelivery da convertire.
+     * @return DishToDeliveryDtoWFull - L'entità DishToDeliveryDtoWFull risultante dalla conversione.
+     */
     public DishToDeliveryDtoWFull dishToDeliveryToDtoWFull(DishToDelivery e){
-        // private Dish dish;
-        // private Delivery delivery;
         return  DishToDeliveryDtoWFull
                 .builder()
                 .id(e.getId())
@@ -41,9 +50,9 @@ public class DishToDeliveryConverter {
      * @return menu - L'entità menu risultante dalla conversione.
      */
     public DishToDelivery dtoWFullToDDishToDelivery(DishToDeliveryDtoWFull dto){
-        DishToDelivery dishToDelivery = new DishToDelivery();
-        dishToDelivery.setId(dto.getId());
-        dishToDelivery.setQuantity(dto.getQuantity());
-        return dishToDelivery;
+        return new DishToDelivery() {{
+                setId(dto.getId());
+                setQuantity(dto.getQuantity());
+            }};
     }
 }

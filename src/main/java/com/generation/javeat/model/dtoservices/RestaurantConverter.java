@@ -14,8 +14,13 @@ public class RestaurantConverter {
     @Autowired
     RestaurantRepository rRepo;
 
-    public Restaurant dtoRToRestaurant(RestaurantDtoR dto) {
-
+    /**
+     * Converte un DTO in un oggetto di tipo Restaurant.
+     * 
+     * @param dto - L'oggetto RestaurantDtoR da convertire.
+     * @return Restaurant - L'entità Restaurant risultante dalla conversione.
+     */
+    public Restaurant dtoRToRestaurant(RestaurantDtoR dto){
         return Restaurant
                 .builder()
                 .id(dto.getId())
@@ -31,8 +36,13 @@ public class RestaurantConverter {
                 .build();
     }
 
-    public RestaurantDtoWFull restaurantToDtoWFull(Restaurant e) {
-
+    /**
+     * Converte un Restaurant in un oggetto RestaurantDtoWFull.
+     * 
+     * @param e - L'oggetto Restaurant da convertire.
+     * @return RestaurantDtoWFull - L'entità RestaurantDtoWFull risultante dalla conversione.
+     */
+    public RestaurantDtoWFull restaurantToDtoWFull(Restaurant e){
         return RestaurantDtoWFull
                 .builder()
                 .id(e.getId())
@@ -58,16 +68,16 @@ public class RestaurantConverter {
      * @return Restaurant - L'entità Restaurant risultante dalla conversione.
      */
     public Restaurant dtoWFullToRestaurant(RestaurantDtoWFull dto){
-        Restaurant restaurant = new Restaurant();
-        restaurant.setName(dto.getName());
-        restaurant.setPhone(dto.getPhone());
-        restaurant.setImgUrl(dto.getImgUrl());
-        restaurant.setOpeningHour(dto.getOpeningHour());
-        restaurant.setClosingHour(dto.getClosingHour());
-        restaurant.setMaxDeliveryDistance(dto.getMaxDeliveryDistance());
-        restaurant.setDeliveryPricePerUnit(dto.getDeliveryPricePerUnit());
-        restaurant.setPositionX(dto.getPositionX());
-        restaurant.setPositionY(dto.getPositionY());
-        return restaurant;
+        return new Restaurant() {{
+                setName(dto.getName());
+                setPhone(dto.getPhone());
+                setImgUrl(dto.getImgUrl());
+                setOpeningHour(dto.getOpeningHour());
+                setClosingHour(dto.getClosingHour());
+                setMaxDeliveryDistance(dto.getMaxDeliveryDistance());
+                setDeliveryPricePerUnit(dto.getDeliveryPricePerUnit());
+                setPositionX(dto.getPositionX());
+                setPositionY(dto.getPositionY());
+            }};
     }
 }

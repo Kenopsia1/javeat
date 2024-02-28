@@ -26,9 +26,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Builder
 public class Menu {
-    //id int
-    //Set Dish dishes
-    //restaurant restaurant
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;

@@ -9,20 +9,30 @@ import com.generation.javeat.model.entities.Menu;
 import com.generation.javeat.model.repositories.MenuRepository;
 @Service
 public class MenuConverter {
+    
     @Autowired
     MenuRepository mRepo;
 
+    /**
+     * Converte un DTO in un oggetto di tipo Menu.
+     * 
+     * @param dto - L'oggetto MenuDtoR da convertire.
+     * @return Menu - L'entità Menu risultante dalla conversione.
+     */
     public Menu dtoRToMenu(MenuDtoR dto){
-        // private int id;
         return  Menu
                 .builder()
                 .id(dto.getId())
                 .build();
     }
 
+    /**
+     * Converte un Menu in un oggetto MenuDtoWFull.
+     * 
+     * @param e - L'oggetto Menu da convertire.
+     * @return MenuDtoWFull - L'entità MenuDtoWFull risultante dalla conversione.
+     */
     public MenuDtoWFull menuToDtoWFull(Menu e){
-        // private Set<Dish> dishes;
-        // private Restaurant restaurant;
         return  MenuDtoWFull
                 .builder()
                 .id(e.getId())
@@ -38,8 +48,8 @@ public class MenuConverter {
      * @return menu - L'entità menu risultante dalla conversione.
      */
     public Menu dtoWFullToDMenu(MenuDtoWFull dto){
-        Menu menu = new Menu();
-        menu.setId(dto.getId());
-        return menu;
+        return new Menu() {{
+                setId(dto.getId());
+            }};
     }
 }

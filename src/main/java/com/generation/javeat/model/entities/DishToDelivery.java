@@ -24,10 +24,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @Builder
 public class DishToDelivery {
-    //id int
-    //quantity int
-    //dish DIsh
-    //delivery Delivery
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
