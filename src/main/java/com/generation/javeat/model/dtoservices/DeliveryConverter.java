@@ -25,18 +25,18 @@ public class DeliveryConverter {
                 .build();
     }
 
-    public DeliveryDtoWFull deliveryToDtoWFull(Delivery d) {
+    public DeliveryDtoWFull deliveryToDtoWFull(Delivery e) {
 
         return DeliveryDtoWFull
                 .builder()
-                .id(d.getId())
-                .expected_arrival(d.getExpected_arrival())
-                .distance(d.getDistance())
-                .paymentMethod(d.getPaymentMethod())
-                .notes(d.getNotes())
-                .user(d.getUser())
-                .restaurant(d.getRestaurant())
-                .dishesDeliveries(d.getDishesDeliveries())
+                .id(e.getId())
+                .expected_arrival(e.getExpected_arrival())
+                .distance(e.getDistance())
+                .paymentMethod(e.getPaymentMethod())
+                .notes(e.getNotes())
+                .user(e.getUser())
+                .restaurant(e.getRestaurant())
+                .dishesDeliveries(e.getDishesDeliveries())
                 .build();
     }
 

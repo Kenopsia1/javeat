@@ -3,6 +3,7 @@ package com.generation.javeat.model.dtoservices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.generation.javeat.model.dto.user.UserDtoLogin;
 import com.generation.javeat.model.dto.user.UserDtoR;
 import com.generation.javeat.model.dto.user.UserDtoWFull;
 import com.generation.javeat.model.entities.User;
@@ -14,12 +15,12 @@ public class UserConverter {
     @Autowired
     UserRepository uRepo;
 
-    public User dtoRToUserLogin(User u) {
+    public UserDtoLogin dtoRToUserLogin(User e) {
 
-        return User
+        return UserDtoLogin
                 .builder()
-                .mail(u.getMail())
-                .password(u.getPassword())
+                .mail(e.getMail())
+                .password(e.getPassword())
                 .build();
     }
 
@@ -35,17 +36,17 @@ public class UserConverter {
                 .build();
     }
 
-    public UserDtoWFull userToDtoWFull(User u) {
+    public UserDtoWFull userToDtoWFull(User e) {
 
         return UserDtoWFull
                 .builder()
-                .id(u.getId())
-                .mail(u.getMail())
-                .password(u.getPassword())
-                .phone(u.getPhone())
-                .positionX(u.getPositionX())
-                .positionY(u.getPositionY())
-                .deliveries(u.getDeliveries())
+                .id(e.getId())
+                .mail(e.getMail())
+                .password(e.getPassword())
+                .phone(e.getPhone())
+                .positionX(e.getPositionX())
+                .positionY(e.getPositionY())
+                .deliveries(e.getDeliveries())
                 .build();
 
     }
@@ -63,8 +64,6 @@ public class UserConverter {
         user.setPhone(dto.getPhone());
         user.setPositionX(dto.getPositionX());
         user.setPositionY(dto.getPositionY());
-        // Altri campi dell'entità User che potresti voler impostare
-
         return user;
     }
 }

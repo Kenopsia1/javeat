@@ -20,14 +20,14 @@ public class MenuConverter {
                 .build();
     }
 
-    public MenuDtoWFull menuToDtoWFull(Menu m){
+    public MenuDtoWFull menuToDtoWFull(Menu e){
         // private Set<Dish> dishes;
         // private Restaurant restaurant;
         return  MenuDtoWFull
                 .builder()
-                .id(m.getId())
-                .dishes(m.getDishes())
-                .restaurant(m.getRestaurant())
+                .id(e.getId())
+                .dishes(e.getDishes())
+                .restaurant(e.getRestaurant())
                 .build();
     }
 }

@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.javeat.model.dto.user.UserDtoLogin;
+import com.generation.javeat.model.dto.user.UserDtoR;
 import com.generation.javeat.model.dto.user.UserDtoWFull;
 import com.generation.javeat.model.dtoservices.UserConverter;
 import com.generation.javeat.model.entities.User;
@@ -82,9 +84,28 @@ public class UserContoller {
         return new ResponseEntity<String>("User was created successfully, please login.", HttpStatus.CREATED);
     }
 
+
+    /**
+     * PUT /users/{id}
+     * Aggiorna i dati di un user nel database.
+     * 
+     * @param dto I nuovi dati dell'user.
+     * @param id L'ID dell'user da aggiornare.
+     * @return UserDtoWFull - DTO aggiornato dell'user completa.
+     */
+    @PutMapping("/users/{id}")
+    public UserDtoWFull updateUser(@RequestBody UserDtoR dto, @PathVariable Integer id) {
+        User user = uRepo.findById(id).orElseThrow();
+
+        // Aggiorna i dati dell'user qui
+        // user.setMail(dto.getMail()); 
+
+        return uConv.userToDtoWFull(uRepo.save(user));
+    }
+
     /**
      * DELETE /users/{id}
-     * Elimina una persona dal database basato sull'ID fornito.
+     * Elimina un user dal database basato sull'ID fornito.
      * 
      * @param id L'ID del'user da eliminare.
      * @return ResponseEntity - Risposta HTTP e messaggio di conferma dell'eliminazione.

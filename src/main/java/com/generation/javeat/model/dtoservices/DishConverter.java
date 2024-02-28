@@ -26,19 +26,19 @@ public class DishConverter {
                 .build();
     }
 
-    public DishDtoWFull dishToDtoWFull(Dish d){
+    public DishDtoWFull dishToDtoWFull(Dish e){
         // private Set<DishToDelivery> deliveries;
         // private List<String> ingredients;
         // private Menu menu;
         return  DishDtoWFull
                 .builder()
-                .id(d.getId())
-                .name(d.getName())
-                .category(d.getCategory())
-                .price(d.getPrice())
-                .deliveries(d.getDeliveries())
-                .ingredients(d.getIngredients())
-                .menu(d.getMenu())
+                .id(e.getId())
+                .name(e.getName())
+                .category(e.getCategory())
+                .price(e.getPrice())
+                .deliveries(e.getDeliveries())
+                .ingredients(e.getIngredients())
+                .menu(e.getMenu())
                 .build();
     }
 }

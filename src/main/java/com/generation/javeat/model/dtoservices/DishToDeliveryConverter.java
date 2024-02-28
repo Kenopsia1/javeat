@@ -22,15 +22,15 @@ public class DishToDeliveryConverter {
                 .build();
     }
 
-    public DishToDeliveryDtoWFull dishToDeliveryToDtoWFull(DishToDelivery dtd){
+    public DishToDeliveryDtoWFull dishToDeliveryToDtoWFull(DishToDelivery e){
         // private Dish dish;
         // private Delivery delivery;
         return  DishToDeliveryDtoWFull
                 .builder()
-                .id(dtd.getId())
-                .quantity(dtd.getQuantity())
-                .dish(dtd.getDish())
-                .delivery(dtd.getDelivery())
+                .id(e.getId())
+                .quantity(e.getQuantity())
+                .dish(e.getDish())
+                .delivery(e.getDelivery())
                 .build();
     }
 }

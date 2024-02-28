@@ -9,5 +9,5 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 public abstract class MenuDtoBase {
-    private int id;
+    private Integer id;
 }

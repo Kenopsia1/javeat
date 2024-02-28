@@ -9,7 +9,7 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 public abstract class DishDtoBase {
-    private int id;
+    private Integer id;
     private String name;
     private String category;
     private double price;

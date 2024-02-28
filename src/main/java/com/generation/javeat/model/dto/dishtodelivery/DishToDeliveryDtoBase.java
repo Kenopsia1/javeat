@@ -9,6 +9,6 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 public abstract class DishToDeliveryDtoBase {
-    private int id;
+    private Integer id;
     private int quantity;
 }
