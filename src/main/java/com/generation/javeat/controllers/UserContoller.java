@@ -63,7 +63,7 @@ public class UserContoller {
      * Registra un nuovo utente nel sistema.
      * 
      * @param dto - Il DTO contenente i dettagli del nuovo utente.
-     * @return ResponseEntity - Risposta HTTP con il DTO dell'utente appena creato.
+     * @return ResponseEntity - Risposta HTTP e messaggio di conferma della creazione.
      */
     @PostMapping("/users/register")
     public ResponseEntity<?> registerUser(@RequestBody UserDtoWFull dto) {
