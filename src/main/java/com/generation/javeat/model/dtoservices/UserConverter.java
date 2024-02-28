@@ -57,7 +57,7 @@ public class UserConverter {
      * @param dto - Il DTO UserDtoWFull da convertire.
      * @return User - L'entità User risultante dalla conversione.
      */
-    public User dtoWFullToUser(UserDtoWFull dto) {
+    public User dtoWFullToUser(UserDtoWFull dto){
         User user = new User();
         user.setMail(dto.getMail());
         user.setPassword(dto.getPassword());

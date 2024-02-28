@@ -30,4 +30,16 @@ public class MenuConverter {
                 .restaurant(e.getRestaurant())
                 .build();
     }
+
+    /**
+     * Converte un DTO menuDtoWFull in un'entità menu.
+     * 
+     * @param dto - Il DTO menuDtoWFull da convertire.
+     * @return menu - L'entità menu risultante dalla conversione.
+     */
+    public Menu dtoWFullToDMenu(MenuDtoWFull dto){
+        Menu menu = new Menu();
+        menu.setId(dto.getId());
+        return menu;
+    }
 }

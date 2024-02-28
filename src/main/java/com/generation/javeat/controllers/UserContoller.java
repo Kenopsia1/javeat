@@ -36,12 +36,29 @@ public class UserContoller {
      * @return AllUsers - L'entità Users salvate nel database.
      */
     @GetMapping("/users")
-    public List<UserDtoWFull> getAllUsers() 
-    {
+    public List<UserDtoWFull> getAllUsers(){
         return uRepo.findAll()
                .stream()
                .map(e -> uConv.userToDtoWFull(e))
                .toList();
+    }
+
+    /**
+     * GET /users/{id}
+     * Restituisce un singolo user basato sull'ID fornito.
+     * 
+     * @param id L'ID del user da ottenere.
+     * @return ResponseEntity - Risposta HTTP contenente il user o un messaggio di errore.
+     */
+    @GetMapping("/users/{id}")
+    public ResponseEntity<?> getUserById(@PathVariable Integer id){
+        Optional<User> userOptional = uRepo.findById(id);
+        if (userOptional.isPresent()) {
+            UserDtoWFull userDto = uConv.userToDtoWFull(userOptional.get());
+            return new ResponseEntity<>(userDto, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<String>("User with ID " + id + " not found.", HttpStatus.NOT_FOUND);
+        }
     }
 
     /**
@@ -68,7 +85,7 @@ public class UserContoller {
      * @return ResponseEntity - Risposta HTTP e messaggio di conferma della creazione.
      */
     @PostMapping("/users/register")
-    public ResponseEntity<?> registerUser(@RequestBody UserDtoWFull dto) {
+    public ResponseEntity<?> registerUser(@RequestBody UserDtoWFull dto){
         if (uRepo.existsByMail(dto.getMail())) {
             return new ResponseEntity<String>("Email già registrata. Scegli un'altra email.", HttpStatus.BAD_REQUEST);
         }
@@ -94,7 +111,7 @@ public class UserContoller {
      * @return UserDtoWFull - DTO aggiornato dell'user completa.
      */
     @PutMapping("/users/{id}")
-    public UserDtoWFull updateUser(@RequestBody UserDtoR dto, @PathVariable Integer id) {
+    public UserDtoWFull updateUser(@RequestBody UserDtoR dto, @PathVariable Integer id){
         User user = uRepo.findById(id).orElseThrow();
 
         // Aggiorna i dati dell'user qui
@@ -111,8 +128,7 @@ public class UserContoller {
      * @return ResponseEntity - Risposta HTTP e messaggio di conferma dell'eliminazione.
      */
     @DeleteMapping("/users/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable Integer id) 
-    {
+    public ResponseEntity<?> deleteUser(@PathVariable Integer id){
         uRepo.deleteById(id);
         return new ResponseEntity<String>("User with ID " + id + " was deleted successfully.", HttpStatus.ACCEPTED);
     }

@@ -40,4 +40,19 @@ public class DeliveryConverter {
                 .build();
     }
 
+    /**
+     * Converte un DTO deliveryDtoWFull in un'entità delivery.
+     * 
+     * @param dto - Il DTO deliveryDtoWFull da convertire.
+     * @return delivery - L'entità delivery risultante dalla conversione.
+     */
+    public Delivery dtoWFullToDelivery(DeliveryDtoWFull dto){
+        Delivery delivery = new Delivery();
+        delivery.setId(dto.getId());
+        delivery.setExpected_arrival(dto.getExpected_arrival());
+        delivery.setDistance(dto.getDistance());
+        delivery.setPaymentMethod(dto.getPaymentMethod());
+        delivery.setNotes(dto.getNotes());
+        return delivery;
+    }
 }

@@ -57,7 +57,7 @@ public class RestaurantConverter {
      * @param dto - Il DTO RestaurantDtoWFull da convertire.
      * @return Restaurant - L'entità Restaurant risultante dalla conversione.
      */
-    public Restaurant dtoWFullToRestaurant(RestaurantDtoWFull dto) {
+    public Restaurant dtoWFullToRestaurant(RestaurantDtoWFull dto){
         Restaurant restaurant = new Restaurant();
         restaurant.setName(dto.getName());
         restaurant.setPhone(dto.getPhone());

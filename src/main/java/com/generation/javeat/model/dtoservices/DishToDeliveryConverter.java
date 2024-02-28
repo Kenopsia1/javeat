@@ -33,4 +33,17 @@ public class DishToDeliveryConverter {
                 .delivery(e.getDelivery())
                 .build();
     }
+
+    /**
+     * Converte un DTO menuDtoWFull in un'entità menu.
+     * 
+     * @param dto - Il DTO menuDtoWFull da convertire.
+     * @return menu - L'entità menu risultante dalla conversione.
+     */
+    public DishToDelivery dtoWFullToDDishToDelivery(DishToDeliveryDtoWFull dto){
+        DishToDelivery dishToDelivery = new DishToDelivery();
+        dishToDelivery.setId(dto.getId());
+        dishToDelivery.setQuantity(dto.getQuantity());
+        return dishToDelivery;
+    }
 }

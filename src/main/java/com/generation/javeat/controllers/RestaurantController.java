@@ -1,6 +1,7 @@
 package com.generation.javeat.controllers;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,12 +35,29 @@ public class RestaurantController {
      * @return AllRestaurants - L'entità Restaurants salvate nel database.
      */
     @GetMapping("/restaurants")
-    public List<RestaurantDtoWFull> getAllRestaurants() 
-    {
+    public List<RestaurantDtoWFull> getAllRestaurants(){
         return rRepo.findAll()
                .stream()
                .map(e -> rConv.restaurantToDtoWFull(e))
                .toList();
+    }
+
+    /**
+     * GET /restaurants/{id}
+     * Restituisce un singolo restaurant basato sull'ID fornito.
+     * 
+     * @param id L'ID del restaurant da ottenere.
+     * @return ResponseEntity - Risposta HTTP contenente il restaurant o un messaggio di errore.
+     */
+    @GetMapping("/restaurants/{id}")
+    public ResponseEntity<?> getRestaurantById(@PathVariable Integer id){
+        Optional<Restaurant> restaurantOptional = rRepo.findById(id);
+        if (restaurantOptional.isPresent()) {
+            RestaurantDtoWFull restaurantDto = rConv.restaurantToDtoWFull(restaurantOptional.get());
+            return new ResponseEntity<>(restaurantDto, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<String>("Restaurant with ID " + id + " not found.", HttpStatus.NOT_FOUND);
+        }
     }
 
     /**
@@ -50,7 +68,7 @@ public class RestaurantController {
      * @return ResponseEntity - Risposta HTTP e messaggio di conferma della creazione.
      */
     @PostMapping("/restaurants/register")
-    public ResponseEntity<?> registerRestaurant(@RequestBody RestaurantDtoWFull dto) {
+    public ResponseEntity<?> registerRestaurant(@RequestBody RestaurantDtoWFull dto){
         
         // Converti il DTO in un'entità Restaurant
         Restaurant newRestaurants = rConv.dtoWFullToRestaurant(dto);
@@ -72,7 +90,7 @@ public class RestaurantController {
      * @return RestaurantDtoWFull - DTO aggiornato del restaurant completa.
      */
     @PutMapping("/restaurants/{id}")
-    public RestaurantDtoWFull updateRestaurant(@RequestBody RestaurantDtoR dto, @PathVariable Integer id) {
+    public RestaurantDtoWFull updateRestaurant(@RequestBody RestaurantDtoR dto, @PathVariable Integer id){
         Restaurant restaurant = rRepo.findById(id).orElseThrow();
 
         // Aggiorna i dati del restaurant qui
@@ -89,8 +107,7 @@ public class RestaurantController {
      * @return ResponseEntity - Risposta HTTP e messaggio di conferma dell'eliminazione.
      */
     @DeleteMapping("/restaurants/{id}")
-    public ResponseEntity<?> deleteRestaurant(@PathVariable Integer id) 
-    {
+    public ResponseEntity<?> deleteRestaurant(@PathVariable Integer id){
         rRepo.deleteById(id);
         return new ResponseEntity<String>("Restaurant with ID " + id + " was deleted successfully.", HttpStatus.ACCEPTED);
     }

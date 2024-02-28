@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,9 +27,14 @@ public class MenuController {
     @Autowired
     MenuRepository mRepo;
 
+    /**
+     * GET /menus
+      * Restituisce una lista di menus completa.
+     * 
+     * @return AllDMenus - L'entità menus salvate nel database.
+     */
     @GetMapping("/menus")
-    public List<MenuDtoWFull> getAllMenus() 
-    {
+    public List<MenuDtoWFull> getAllMenus(){
         return mRepo.findAll()
                .stream()
                .map(e -> mConv.menuToDtoWFull(e))
@@ -44,42 +50,60 @@ public class MenuController {
      */
     @GetMapping("/menus/{id}")
     public ResponseEntity<?> getMenuById(@PathVariable Integer id) {
-        // Cerca il menu nel database per ID
         Optional<Menu> menuOptional = mRepo.findById(id);
 
         if (menuOptional.isPresent()) {
-            // Se il menu è presente, converte l'entità in un DTO da restituire come risposta
             MenuDtoWFull menuDto = mConv.menuToDtoWFull(menuOptional.get());
             return new ResponseEntity<>(menuDto, HttpStatus.OK);
         } else {
-            // Se il menu non è stato trovato, restituisce un messaggio di errore
             return new ResponseEntity<String>("Menu with ID " + id + " not found.", HttpStatus.NOT_FOUND);
         }
     }
 
     /**
-     * PUT /users/{id}
-     * Aggiorna i dati di un user nel database.
+     * POST /menus/register
+     * Registra un nuovo menu nel sistema.
      * 
-     * @param dto I nuovi dati dell'user.
-     * @param id L'ID dell'user da aggiornare.
-     * @return UserDtoWFull - DTO aggiornato dell'user completa.
+     * @param dto - Il DTO contenente i dettagli del nuovo utente.
+     * @return ResponseEntity - Risposta HTTP e messaggio di conferma della creazione.
+     */
+    @PostMapping("/menus/register")
+    public ResponseEntity<?> registermenu(@RequestBody MenuDtoWFull dto){
+        
+        // Converti il DTO in un'entità menu
+        Menu newmenus = mConv.dtoWFullToDMenu(dto);
+        // Salva il nuovo utente nel database
+        Menu savedmenur = mRepo.save(newmenus);
+
+        // Converte l'entità salvata in un DTO da restituire come risposta
+        //MenuDtoWFull savedMenuDto = rConv.MenuToDtoWFull(savedmenu);
+
+        return new ResponseEntity<String>("Menu was created successfully, please login.", HttpStatus.CREATED);
+    }
+
+    /**
+     * PUT /menus/{id}
+     * Aggiorna i dati di un menu nel database.
+     * 
+     * @param dto I nuovi dati dell'menu.
+     * @param id L'ID dell'menu da aggiornare.
+     * @return menuDtoWFull - DTO aggiornato dell'menu completa.
      */
     @PutMapping("/menus/{id}")
     public MenuDtoWFull updateMenu(@RequestBody MenuDtoR dto, @PathVariable Integer id) {
         Menu menu = mRepo.findById(id).orElseThrow();
 
-        // Aggiorna i dati dell'user qui
-        // user.setMail(dto.getMail()); 
+        // Aggiorna i dati dell'menu qui
+        // menu.setMail(dto.getMail()); 
 
         return mConv.menuToDtoWFull(mRepo.save(menu));
     }
 
     /**
-     * DELETE /users/{id}
-     * Elimina un user dal database basato sull'ID fornito.
+     * DELETE /menus/{id}
+     * Elimina un menu dal database basato sull'ID fornito.
      * 
-     * @param id L'ID del'user da eliminare.
+     * @param id L'ID del'menu da eliminare.
      * @return ResponseEntity - Risposta HTTP e messaggio di conferma dell'eliminazione.
      */
     @DeleteMapping("/menus/{id}")
