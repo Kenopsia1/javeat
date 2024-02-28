@@ -10,11 +10,9 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.javeat.model.dto.user.UserDtoBase;
 import com.generation.javeat.model.dto.user.UserDtoLogin;
 import com.generation.javeat.model.dto.user.UserDtoWFull;
 import com.generation.javeat.model.dtoservices.UserConverter;
@@ -69,22 +67,19 @@ public class UserContoller {
      */
     @PostMapping("/users/register")
     public ResponseEntity<?> registerUser(@RequestBody UserDtoWFull dto) {
-        // Verifica se l'utente già esiste nel database in base all'indirizzo email
         if (uRepo.existsByMail(dto.getMail())) {
             return new ResponseEntity<String>("Email già registrata. Scegli un'altra email.", HttpStatus.BAD_REQUEST);
         }
 
         // Converti il DTO in un'entità User
         User newUser = uConv.dtoWFullToUser(dto);
-
         // Salva il nuovo utente nel database
         User savedUser = uRepo.save(newUser);
 
         // Converte l'entità salvata in un DTO da restituire come risposta
-        UserDtoWFull savedUserDto = uConv.userToDtoWFull(savedUser);
+        // UserDtoWFull savedUserDto = uConv.userToDtoWFull(savedUser);
 
-        // Restituisci la risposta con lo status HTTP 201 Created e il DTO dell'utente appena creato
-        return new ResponseEntity<>(savedUserDto, HttpStatus.CREATED);
+        return new ResponseEntity<String>("User was created successfully, please login.", HttpStatus.CREATED);
     }
 
     /**
@@ -92,12 +87,12 @@ public class UserContoller {
      * Elimina una persona dal database basato sull'ID fornito.
      * 
      * @param id L'ID del'user da eliminare.
-     * @return String - Messaggio di conferma dell'eliminazione.
+     * @return ResponseEntity - Risposta HTTP e messaggio di conferma dell'eliminazione.
      */
     @DeleteMapping("/users/{id}")
-    public String deleteUser(@PathVariable Integer id) 
+    public ResponseEntity<?> deleteUser(@PathVariable Integer id) 
     {
         uRepo.deleteById(id);
-        return "User with ID " + id + " was deleted successfully.";
+        return new ResponseEntity<String>("User with ID " + id + " was deleted successfully.", HttpStatus.ACCEPTED);
     }
 }
