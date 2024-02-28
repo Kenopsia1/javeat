@@ -14,6 +14,15 @@ public class UserConverter {
     @Autowired
     UserRepository uRepo;
 
+    public User dtoRToUserLogin(User u) {
+
+        return User
+                .builder()
+                .mail(u.getMail())
+                .password(u.getPassword())
+                .build();
+    }
+
     public User dtoRToUser(UserDtoR dto) {
 
         return User
