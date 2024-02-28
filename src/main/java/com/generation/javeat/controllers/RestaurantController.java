@@ -73,6 +73,7 @@ public class RestaurantController {
         // Converti il DTO in un'entità Restaurant
         Restaurant newRestaurants = rConv.dtoWFullToRestaurant(dto);
         // Salva il nuovo utente nel database
+        @SuppressWarnings("unused")
         Restaurant savedRestaurant = rRepo.save(newRestaurants);
 
         // Converte l'entità salvata in un DTO da restituire come risposta

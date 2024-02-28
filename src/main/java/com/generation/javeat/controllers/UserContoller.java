@@ -93,6 +93,7 @@ public class UserContoller {
         // Converti il DTO in un'entità User
         User newUser = uConv.dtoWFullToUser(dto);
         // Salva il nuovo utente nel database
+        @SuppressWarnings("unused")
         User savedUser = uRepo.save(newUser);
 
         // Converte l'entità salvata in un DTO da restituire come risposta
