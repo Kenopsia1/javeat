@@ -31,6 +31,6 @@ public class User {
     private int positionX, positionY;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "deliveries",cascade = CascadeType.REMOVE,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user",cascade = CascadeType.REMOVE,fetch = FetchType.EAGER)
     private Set<Delivery> deliveries;
 }
