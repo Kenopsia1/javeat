@@ -87,5 +87,17 @@ public class UserContoller {
         return new ResponseEntity<>(savedUserDto, HttpStatus.CREATED);
     }
 
-    
+    /**
+     * DELETE /users/{id}
+     * Elimina una persona dal database basato sull'ID fornito.
+     * 
+     * @param id L'ID del'user da eliminare.
+     * @return String - Messaggio di conferma dell'eliminazione.
+     */
+    @DeleteMapping("/users/{id}")
+    public String deleteUser(@PathVariable Integer id) 
+    {
+        uRepo.deleteById(id);
+        return "User with ID " + id + " was deleted successfully.";
+    }
 }
