@@ -73,7 +73,7 @@ public class DishController {
         // Converti il DTO in un'entità dish
         Dish newDishs = dConv.dtoWFullToDish(dto);
         // Salva il nuovo utente nel database
-        Dish savedDishr = dRepo.save(newDishs);
+        Dish savedDish = dRepo.save(newDishs);
 
         // Converte l'entità salvata in un DTO da restituire come risposta
         //DishDtoWFull savedDishDto = rConv.DishToDtoWFull(savedDish);

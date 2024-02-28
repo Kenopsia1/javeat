@@ -74,7 +74,7 @@ public class DishToDeliveryController {
         // Converti il DTO in un'entità dishToDelivery
         DishToDelivery newdishestodeliveries = dtdConv.dtoWFullToDDishToDelivery(dto);
         // Salva il nuovo utente nel database
-        DishToDelivery saveddishToDeliveryr = dtdRepo.save(newdishestodeliveries);
+        DishToDelivery saveddishToDelivery = dtdRepo.save(newdishestodeliveries);
 
         // Converte l'entità salvata in un DTO da restituire come risposta
         //dishToDeliveryDtoWFull saveddishToDeliveryDto = rConv.dishToDeliveryToDtoWFull(saveddishToDelivery);

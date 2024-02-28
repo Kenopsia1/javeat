@@ -49,7 +49,7 @@ public class MenuController {
      * @return ResponseEntity - Risposta HTTP contenente il menu o un messaggio di errore.
      */
     @GetMapping("/menus/{id}")
-    public ResponseEntity<?> getMenuById(@PathVariable Integer id) {
+    public ResponseEntity<?> getMenuById(@PathVariable Integer id){
         Optional<Menu> menuOptional = mRepo.findById(id);
 
         if (menuOptional.isPresent()) {
@@ -73,7 +73,7 @@ public class MenuController {
         // Converti il DTO in un'entità menu
         Menu newmenus = mConv.dtoWFullToDMenu(dto);
         // Salva il nuovo utente nel database
-        Menu savedmenur = mRepo.save(newmenus);
+        Menu savedmenu = mRepo.save(newmenus);
 
         // Converte l'entità salvata in un DTO da restituire come risposta
         //MenuDtoWFull savedMenuDto = rConv.MenuToDtoWFull(savedmenu);
