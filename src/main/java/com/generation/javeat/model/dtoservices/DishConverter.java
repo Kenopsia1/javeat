@@ -55,10 +55,10 @@ public class DishConverter {
      * @return Dish - L'entità Dish risultante dalla conversione.
      */
     public Dish dtoWFullToDish(DishDtoWFull dto) {
-        return new Dish() {{
-                    setName(dto.getName());
-                    setCategory(dto.getCategory());
-                    setPrice(dto.getPrice());
-                }};
+        Dish dish = new Dish();
+        dish.setName(dto.getName());
+        dish.setCategory(dto.getCategory());
+        dish.setPrice(dto.getPrice());
+        return dish;
     };
 }

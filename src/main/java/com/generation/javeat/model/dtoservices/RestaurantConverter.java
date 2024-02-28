@@ -68,16 +68,16 @@ public class RestaurantConverter {
      * @return Restaurant - L'entità Restaurant risultante dalla conversione.
      */
     public Restaurant dtoWFullToRestaurant(RestaurantDtoWFull dto){
-        return new Restaurant() {{
-                setName(dto.getName());
-                setPhone(dto.getPhone());
-                setImgUrl(dto.getImgUrl());
-                setOpeningHour(dto.getOpeningHour());
-                setClosingHour(dto.getClosingHour());
-                setMaxDeliveryDistance(dto.getMaxDeliveryDistance());
-                setDeliveryPricePerUnit(dto.getDeliveryPricePerUnit());
-                setPositionX(dto.getPositionX());
-                setPositionY(dto.getPositionY());
-            }};
+        Restaurant restaurant = new Restaurant();
+        restaurant.setName(dto.getName());
+        restaurant.setPhone(dto.getPhone());
+        restaurant.setImgUrl(dto.getImgUrl());
+        restaurant.setOpeningHour(dto.getOpeningHour());
+        restaurant.setClosingHour(dto.getClosingHour());
+        restaurant.setMaxDeliveryDistance(dto.getMaxDeliveryDistance());
+        restaurant.setDeliveryPricePerUnit(dto.getDeliveryPricePerUnit());
+        restaurant.setPositionX(dto.getPositionX());
+        restaurant.setPositionY(dto.getPositionY());
+        return restaurant;
     }
 }
