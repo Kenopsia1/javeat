@@ -18,7 +18,6 @@ public class UserConverter {
 
         return User
                 .builder()
-                .id(dto.getId())
                 .mail(dto.getMail())
                 .password(dto.getPassword())
                 .phone(dto.getPhone())
