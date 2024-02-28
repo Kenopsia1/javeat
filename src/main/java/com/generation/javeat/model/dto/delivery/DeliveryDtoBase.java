@@ -1,6 +1,5 @@
 package com.generation.javeat.model.dto.delivery;
 
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
@@ -18,5 +17,4 @@ public abstract class DeliveryDtoBase {
     private LocalDateTime expected_arrival;
     private int distance;
     private String paymentMethod, notes;
-    
 }
