@@ -49,10 +49,10 @@ public class DishToDeliveryConverter {
      * @param dto - Il DTO menuDtoWFull da convertire.
      * @return menu - L'entità menu risultante dalla conversione.
      */
-    public DishToDelivery dtoWFullToDDishToDelivery(DishToDeliveryDtoWFull dto){
-        return new DishToDelivery() {{
-                setId(dto.getId());
-                setQuantity(dto.getQuantity());
-            }};
+    public DishToDelivery dtoWFullToDDishToDelivery(DishToDeliveryDtoWFull dto){        
+        DishToDelivery dishToDelivery = new DishToDelivery();
+        dishToDelivery.setId(dto.getId());
+        dishToDelivery.setQuantity(dto.getQuantity());
+        return dishToDelivery;
     }
 }

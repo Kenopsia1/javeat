@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import com.generation.javeat.model.dto.delivery.DeliveryDtoR;
 import com.generation.javeat.model.dto.delivery.DeliveryDtoWFull;
 import com.generation.javeat.model.entities.Delivery;
+import com.generation.javeat.model.entities.DishToDelivery;
 import com.generation.javeat.model.repositories.DeliveryRepository;
 @Service
 public class DeliveryConverter {
@@ -57,12 +58,12 @@ public class DeliveryConverter {
      * @return Delivery - L'entità Delivery risultante dalla conversione.
      */
     public Delivery dtoWFullToDelivery(DeliveryDtoWFull dto){
-        return new Delivery() {{
-                    setId(dto.getId());
-                    setExpected_arrival(dto.getExpected_arrival());
-                    setDistance(dto.getDistance());
-                    setPaymentMethod(dto.getPaymentMethod());
-                    setNotes(dto.getNotes());
-                    }};
+        Delivery delivery = new Delivery();
+        delivery.setId(dto.getId());
+        delivery.setExpected_arrival(dto.getExpected_arrival());
+        delivery.setDistance(dto.getDistance());
+        delivery.setPaymentMethod(dto.getPaymentMethod());
+        delivery.setNotes(dto.getNotes());
+        return delivery;
     }
 }

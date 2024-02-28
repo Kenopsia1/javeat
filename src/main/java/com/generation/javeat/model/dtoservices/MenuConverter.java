@@ -48,8 +48,8 @@ public class MenuConverter {
      * @return menu - L'entità menu risultante dalla conversione.
      */
     public Menu dtoWFullToDMenu(MenuDtoWFull dto){
-        return new Menu() {{
-                setId(dto.getId());
-            }};
+        Menu menu = new Menu();
+        menu.setId(dto.getId());
+        return menu;
     }
 }
