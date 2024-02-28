@@ -12,7 +12,7 @@ import lombok.experimental.SuperBuilder;
 public abstract class RestaurantDtoBase {
 
     private Integer id;
-    private String phone, imgUrl;
+    private String phone, imgUrl, name;
     private int openingHour, closingHour, positionX, positionY, maxDeliveryDistance;
     private Double deliveryPricePerUnit;
 }

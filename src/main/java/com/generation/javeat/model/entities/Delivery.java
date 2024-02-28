@@ -1,6 +1,7 @@
 package com.generation.javeat.model.entities;
 
 import java.sql.Date;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -30,7 +31,7 @@ public class Delivery {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private Date expected_arrival;
+    private LocalDateTime expected_arrival;
 
     private int distance;
     private String paymentMethod, notes;
@@ -46,7 +47,7 @@ public class Delivery {
     private Restaurant restaurant;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "deliveries",cascade = CascadeType.REMOVE,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "delivery",cascade = CascadeType.REMOVE,fetch = FetchType.EAGER)
     private Set<DishToDelivery> dishesDeliveries;
 
     public int getDistance(Delivery d){

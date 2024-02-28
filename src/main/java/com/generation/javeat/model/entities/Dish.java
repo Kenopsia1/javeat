@@ -44,12 +44,12 @@ public class Dish {
     private double price;
 
     @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "foodTypes", joinColumns = @JoinColumn(name = "restauran_id"))
-    @Column(name = "restaurant", nullable = false)
+    @CollectionTable(name = "ingredients", joinColumns = @JoinColumn(name = "dish_id"))
+    @Column(name = "ingredients", nullable = false)
     private List<String> ingredients;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "dishtodeliver", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "dish", fetch = FetchType.EAGER)
     private Set<DishToDelivery> deliveries;
 
     @JsonIgnore

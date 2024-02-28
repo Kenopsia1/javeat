@@ -19,6 +19,7 @@ public class RestaurantConverter {
         return Restaurant
                 .builder()
                 .id(dto.getId())
+                .name(dto.getName())
                 .phone(dto.getPhone())
                 .imgUrl(dto.getImgUrl())
                 .openingHour(dto.getOpeningHour())
@@ -35,6 +36,7 @@ public class RestaurantConverter {
         return RestaurantDtoWFull
                 .builder()
                 .id(r.getId())
+                .name(r.getName())
                 .phone(r.getPhone())
                 .imgUrl(r.getImgUrl())
                 .openingHour(r.getOpeningHour())

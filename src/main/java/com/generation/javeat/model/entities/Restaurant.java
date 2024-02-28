@@ -33,19 +33,19 @@
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Integer id;
 
-        private String phone, imgUrl;
+        private String phone, imgUrl, name;
 
         private int openingHour, closingHour, positionX, positionY, maxDeliveryDistance;
 
         private Double deliveryPricePerUnit;
 
         @ElementCollection(targetClass = String.class, fetch = FetchType.EAGER)
-        @CollectionTable(name = "foodTypes", joinColumns = @JoinColumn(name = "restauran_id"))
-        @Column(name = "restaurant", nullable = false)
+        @CollectionTable(name = "foodTypes", joinColumns = @JoinColumn(name = "restaurant_id"))
+        @Column(name = "FoodTypes", nullable = false)
         private List<String> foodTypes;
 
         @JsonIgnore
-        @OneToMany(mappedBy = "deliveries", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+        @OneToMany(mappedBy = "restaurant", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
         private Set<Delivery> deliveries;
 
         @JsonIgnore

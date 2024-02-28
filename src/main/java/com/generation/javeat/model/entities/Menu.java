@@ -32,12 +32,12 @@ public class Menu {
     private int id;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "dishes", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "menu", fetch = FetchType.EAGER)
     private Set<Dish> dishes;
 
     @JsonIgnore
     @ToString.Exclude
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "restaurant")
+    @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 }
