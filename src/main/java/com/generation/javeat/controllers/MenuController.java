@@ -49,7 +49,7 @@ public class MenuController {
      * @return ResponseEntity - Risposta HTTP contenente il menu o un messaggio di errore.
      */
     @GetMapping("/menus/{id}")
-    public ResponseEntity<?> getMenuById(@PathVariable Integer id) {
+    public ResponseEntity<?> getMenuById(@PathVariable Integer id){
         Optional<Menu> menuOptional = mRepo.findById(id);
 
         if (menuOptional.isPresent()) {

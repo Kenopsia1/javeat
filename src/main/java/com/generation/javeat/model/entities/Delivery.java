@@ -76,7 +76,7 @@ public class Delivery {
     }
 
     public double getTotalPrice(Delivery d){
-    // gettotalprice() = getdishesprice+getriderrevenue()
+    // gettotalprice() = getdishesprice + getriderrevenue()
         return d.getDishesPrice(d) + d.getRiderRevenue(d);
     }
 

@@ -13,8 +13,13 @@ public class DeliveryConverter {
     @Autowired
     DeliveryRepository dRepo;
 
-    public Delivery dtoToDelivery(DeliveryDtoR dto) {
-
+    /**
+     * Converte un dto in un oggetto di tipo Delivery.
+     * 
+     * @param dto - L'oggetto DeliveryDtoR da convertire.
+     * @return Delivery - L'entità Delivery risultante dalla conversione.
+     */
+    public Delivery dtoToDelivery(DeliveryDtoR dto){
         return Delivery
                 .builder()
                 .id(dto.getId())
@@ -25,8 +30,13 @@ public class DeliveryConverter {
                 .build();
     }
 
-    public DeliveryDtoWFull deliveryToDtoWFull(Delivery e) {
-
+    /**
+     * Converte un Delivery in un oggetto DeliveryDtoWFull.
+     * 
+     * @param e - L'oggetto Delivery da convertire.
+     * @return DeliveryDtoWFull - L'entità DeliveryDtoWFull risultante dalla conversione.
+     */
+    public DeliveryDtoWFull deliveryToDtoWFull(Delivery e){
         return DeliveryDtoWFull
                 .builder()
                 .id(e.getId())
@@ -41,18 +51,18 @@ public class DeliveryConverter {
     }
 
     /**
-     * Converte un DTO deliveryDtoWFull in un'entità delivery.
+     * Converte un DTO DeliveryDtoWFull in un'entità Delivery.
      * 
-     * @param dto - Il DTO deliveryDtoWFull da convertire.
-     * @return delivery - L'entità delivery risultante dalla conversione.
+     * @param dto - Il DTO DeliveryDtoWFull da convertire.
+     * @return Delivery - L'entità Delivery risultante dalla conversione.
      */
     public Delivery dtoWFullToDelivery(DeliveryDtoWFull dto){
-        Delivery delivery = new Delivery();
-        delivery.setId(dto.getId());
-        delivery.setExpected_arrival(dto.getExpected_arrival());
-        delivery.setDistance(dto.getDistance());
-        delivery.setPaymentMethod(dto.getPaymentMethod());
-        delivery.setNotes(dto.getNotes());
-        return delivery;
+        return new Delivery() {{
+                    setId(dto.getId());
+                    setExpected_arrival(dto.getExpected_arrival());
+                    setDistance(dto.getDistance());
+                    setPaymentMethod(dto.getPaymentMethod());
+                    setNotes(dto.getNotes());
+                    }};
     }
 }

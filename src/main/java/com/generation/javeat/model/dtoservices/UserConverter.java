@@ -15,8 +15,13 @@ public class UserConverter {
     @Autowired
     UserRepository uRepo;
 
-    public UserDtoLogin dtoRToUserLogin(User e) {
-
+    /**
+     * Converte un User in un oggetto di tipo UserDtoLogin.
+     * 
+     * @param e - L'oggetto User da convertire.
+     * @return UserDtoLogin - L'entità UserDtoLogin risultante dalla conversione.
+     */
+    public UserDtoLogin dtoRToUserLogin(User e){
         return UserDtoLogin
                 .builder()
                 .mail(e.getMail())
@@ -24,8 +29,13 @@ public class UserConverter {
                 .build();
     }
 
-    public User dtoRToUser(UserDtoR dto) {
-
+    /**
+     * Converte un DTO in un oggetto di tipo User.
+     * 
+     * @param dto - L'oggetto UserDtoR da convertire.
+     * @return User - L'entità User risultante dalla conversione.
+     */
+    public User dtoRToUser(UserDtoR dto){
         return User
                 .builder()
                 .mail(dto.getMail())
@@ -35,9 +45,14 @@ public class UserConverter {
                 .positionY(dto.getPositionY())
                 .build();
     }
-
-    public UserDtoWFull userToDtoWFull(User e) {
-
+    
+    /**
+     * Converte un User in un oggetto UserDtoWFull.
+     * 
+     * @param e - L'oggetto User da convertire.
+     * @return UserDtoWFull - L'entità UserDtoWFull risultante dalla conversione.
+     */
+    public UserDtoWFull userToDtoWFull(User e){
         return UserDtoWFull
                 .builder()
                 .id(e.getId())
@@ -48,7 +63,6 @@ public class UserConverter {
                 .positionY(e.getPositionY())
                 .deliveries(e.getDeliveries())
                 .build();
-
     }
 
     /**
@@ -58,12 +72,12 @@ public class UserConverter {
      * @return User - L'entità User risultante dalla conversione.
      */
     public User dtoWFullToUser(UserDtoWFull dto){
-        User user = new User();
-        user.setMail(dto.getMail());
-        user.setPassword(dto.getPassword());
-        user.setPhone(dto.getPhone());
-        user.setPositionX(dto.getPositionX());
-        user.setPositionY(dto.getPositionY());
-        return user;
+        return new User() {{
+                setMail(dto.getMail());
+                setPassword(dto.getPassword());
+                setPhone(dto.getPhone());
+                setPositionX(dto.getPositionX());
+                setPositionY(dto.getPositionY());
+            }};
     }
 }

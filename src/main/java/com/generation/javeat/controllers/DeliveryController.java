@@ -50,7 +50,7 @@ public class DeliveryController {
      * @return ResponseEntity - Risposta HTTP contenente il Delivery o un messaggio di errore.
      */
     @GetMapping("/deliveries/{id}")
-    public ResponseEntity<?> getDeliveryById(@PathVariable Integer id) {
+    public ResponseEntity<?> getDeliveryById(@PathVariable Integer id){
         Optional<Delivery> DeliveryOptional = deRepo.findById(id);
 
         if (DeliveryOptional.isPresent()) {
@@ -91,7 +91,7 @@ public class DeliveryController {
      * @return DeliveryDtoWFull - DTO aggiornato del delivery completa.
      */
     @PutMapping("/deliveries/{id}")
-    public DeliveryDtoWFull updateDelivery(@RequestBody DeliveryDtoR dto, @PathVariable Integer id) {
+    public DeliveryDtoWFull updateDelivery(@RequestBody DeliveryDtoR dto, @PathVariable Integer id){
         Delivery Delivery = deRepo.findById(id).orElseThrow();
 
         // Aggiorna i dati del delivery qui
