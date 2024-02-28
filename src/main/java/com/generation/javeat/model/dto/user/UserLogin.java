@@ -10,9 +10,8 @@ import lombok.experimental.SuperBuilder;
 @AllArgsConstructor
 @NoArgsConstructor
 @SuperBuilder
-public abstract class UserDtoBase {
+public abstract class UserLogin {
 
-    private String mail, password, phone;
-    private int positionX, positionY;
+    private String mail, password;
 
 }

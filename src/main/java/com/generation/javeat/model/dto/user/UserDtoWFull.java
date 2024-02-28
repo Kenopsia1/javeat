@@ -16,6 +16,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @EqualsAndHashCode(callSuper=false)
 public class UserDtoWFull extends UserDtoBase{
-
+    private Integer id;
     private Set<Delivery> deliveries;
 }
