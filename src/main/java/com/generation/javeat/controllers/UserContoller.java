@@ -6,11 +6,15 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.generation.javeat.model.dto.user.UserDtoBase;
 import com.generation.javeat.model.dto.user.UserDtoLogin;
 import com.generation.javeat.model.dto.user.UserDtoWFull;
 import com.generation.javeat.model.dtoservices.UserConverter;
@@ -26,7 +30,7 @@ public class UserContoller {
     UserRepository uRepo;
 
     /**
-     * Get /users
+     * GET /users
       * Restituisce una lista di users completa.
      * 
      * @return AllUsers - L'entità Users salvate nel database.
@@ -55,5 +59,18 @@ public class UserContoller {
             return new ResponseEntity<String>("User non trovato!",HttpStatus.UNAUTHORIZED);
         }
     }
+
+    /**
+     * POST /users/add
+     * Controlla la presenza di un user nel db.
+     * 
+     * @return UserFull - L'entità User salvata nel database.
+     */
+    @PostMapping("/users/add")
+    public User insert(@RequestBody User u) 
+    {
+        return uRepo.save(uConv.userToDtoWFull(u));
+    }
+
 
 }
