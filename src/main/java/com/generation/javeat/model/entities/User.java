@@ -42,7 +42,7 @@ public class User {
         if (positionX >= 0 && positionX <= 1000) {
             this.positionX = positionX;
         } else {
-            throw new EntityException("positionX deve essere compreso tra 0 e 1000, hai inserito "+positionX);
+            throw new EntityException("positionX deve essere compreso tra 0 e 1000, hai inserito: "+positionX);
         }
     }
 
@@ -50,7 +50,7 @@ public class User {
         if (positionY >= 0 && positionY <= 1000) {
             this.positionY = positionY;
         } else {
-            throw new EntityException("positionY deve essere compreso tra 0 e 1000, hai inserito "+positionY);
+            throw new EntityException("positionY deve essere compreso tra 0 e 1000, hai inserito: "+positionY);
         }
     }
 }
