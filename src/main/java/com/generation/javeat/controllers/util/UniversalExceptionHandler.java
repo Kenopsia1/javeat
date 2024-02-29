@@ -20,4 +20,11 @@ public class UniversalExceptionHandler
     {
         return new ResponseEntity<String>("Errore nella path variable", HttpStatus.NOT_ACCEPTABLE);
     }
+
+    @ExceptionHandler(EntityException.class)
+    public ResponseEntity<?> gestisciEccezioneEntita(EntityException e)//catch(HttpMessageNotReadableException e)
+    {
+        return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
 }
