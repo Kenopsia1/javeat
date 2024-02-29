@@ -90,7 +90,7 @@ public class DeliveryConverter {
         return delivery;
     }
 
-    private Set<DishToDelivery> riempiLista(Map<Integer, Integer> mappa) {
+    private Set<DishToDelivery> riempiLista(Map<Integer, Integer> mappa){
         Set<DishToDelivery> dishesDeliveries = new HashSet<DishToDelivery>();
         for (Map.Entry<Integer, Integer> entry : mappa.entrySet()){
             Dish d = null;
@@ -128,7 +128,7 @@ public class DeliveryConverter {
         return null;
     }
     
-    private int calculateDistance(Restaurant r, User u) {
+    private int calculateDistance(Restaurant r, User u){
         //d = √(x2 − x1)^2 + (y2 − Y1)^2
         return (int) Math.sqrt(Math.pow(u.getPositionX() - r.getPositionX(), 2) 
         +                      Math.pow(u.getPositionY() - r.getPositionY(), 2));

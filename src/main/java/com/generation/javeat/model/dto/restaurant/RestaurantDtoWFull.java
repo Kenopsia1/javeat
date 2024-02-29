@@ -18,7 +18,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @EqualsAndHashCode(callSuper=false)
 public class RestaurantDtoWFull extends RestaurantDtoBase{
-
     private List<String> foodTypes;
     private Set<Delivery> deliveries;
     private Menu menu;

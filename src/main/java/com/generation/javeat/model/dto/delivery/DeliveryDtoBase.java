@@ -12,7 +12,6 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 public abstract class DeliveryDtoBase {
-
     private Integer id;
     private LocalDateTime expected_arrival;
     private int distance;

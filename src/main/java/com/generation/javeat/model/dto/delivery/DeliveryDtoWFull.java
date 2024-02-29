@@ -18,7 +18,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @EqualsAndHashCode(callSuper=false)
 public class DeliveryDtoWFull extends DeliveryDtoBase {
-
     private User user;
     private Restaurant restaurant;
     private Set<DishToDelivery> dishesDeliveries;

@@ -54,7 +54,7 @@ public class DishConverter {
      * @param dto - Il DTO DishDtoWFull da convertire.
      * @return Dish - L'entità Dish risultante dalla conversione.
      */
-    public Dish dtoWFullToDish(DishDtoWFull dto) {
+    public Dish dtoWFullToDish(DishDtoWFull dto){
         Dish dish = new Dish();
         dish.setName(dto.getName());
         dish.setCategory(dto.getCategory());

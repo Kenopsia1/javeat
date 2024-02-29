@@ -15,7 +15,6 @@ import lombok.experimental.SuperBuilder;
 @SuperBuilder
 @EqualsAndHashCode(callSuper=false)
 public class DeliveryDtoRPost extends DeliveryDtoBase {
-
     private Integer user_id;
     private Integer restaurant_id;
     private LocalTime deliveryTime;

@@ -8,6 +8,5 @@ import lombok.experimental.SuperBuilder;
 @Data
 @SuperBuilder
 public class DeliveryDtoR extends DeliveryDtoBase{
-
     public DeliveryDtoR(){};
 }

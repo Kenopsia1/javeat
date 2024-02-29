@@ -10,7 +10,6 @@ import lombok.experimental.SuperBuilder;
 @NoArgsConstructor
 @SuperBuilder
 public abstract class RestaurantDtoBase {
-
     private Integer id;
     private String phone, imgUrl, name;
     private int openingHour, closingHour, positionX, positionY, maxDeliveryDistance;
