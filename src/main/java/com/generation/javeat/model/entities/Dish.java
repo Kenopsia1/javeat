@@ -56,7 +56,7 @@ public class Dish {
     private Menu menu;
 
     public void setPrice(Double price) {
-        if (price != null && price <= 0) {
+        if (price != 0 && price <= 0) {
             throw new EntityException("Price non puo essere minore di 0, hai inserito: " + price);
         }
         this.price = price;

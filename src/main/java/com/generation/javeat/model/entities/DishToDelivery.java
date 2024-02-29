@@ -2,6 +2,7 @@ package com.generation.javeat.model.entities;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.generation.javeat.controllers.util.EntityException;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -45,5 +46,12 @@ public class DishToDelivery {
     public double getPrice(DishToDelivery dtd){
     // getPrice() = price x quantity
         return dtd.getQuantity()*dtd.getDish().getPrice();
+    }
+
+    public void setQuantity(int quantity) {
+        if (quantity != 0 && quantity < 0) {
+            throw new EntityException("deliveryPricePerUnit non puo essere minore di 0, hai inserito: " + quantity);
+        }
+        this.quantity = quantity;
     }
 }
