@@ -4,6 +4,7 @@ import java.util.Set;
 import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.generation.javeat.controllers.util.EntityException;
 
 import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
@@ -53,4 +54,11 @@ public class Dish {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "menu_id")
     private Menu menu;
+
+    public void setPrice(Double price) {
+        if (price != null && price <= 0) {
+            throw new EntityException("Price non puo essere minore di 0, hai inserito: " + price);
+        }
+        this.price = price;
+    }
 }
