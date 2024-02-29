@@ -51,33 +51,19 @@ public class Delivery {
     @OneToMany(mappedBy = "delivery",cascade = CascadeType.REMOVE,fetch = FetchType.EAGER)
     private Set<DishToDelivery> dishesDeliveries;
 
-    public int getDistance(Delivery d){
-    //d = √(x2 − x1)^2 + (y2 − Y1)^2
-        int deltaX = d.getRestaurant().getPositionX() - d.getUser().getPositionX();
-        int deltaY = d.getRestaurant().getPositionY() - d.getUser().getPositionY();
-        return (int) Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-    }
-
-    public double getDishesPrice(Delivery d){
+    public double getDishesPrice(){
     // getDishesPrice() = ∑ getPrice()
-        if(d.getDishesDeliveries()==null)
-        return 0;
-
-        double res = 0;
-        for(DishToDelivery dtd: d.getDishesDeliveries())
-            res+=dtd.getPrice(dtd);
-
-        return res;
+        return dishesDeliveries.stream().mapToDouble(i -> i.getDish().getPrice()).sum();
     }
     
-    public double getRiderRevenue(Delivery d){
+    public double getRiderRevenue(){
     // getriderevenue() = deliverypriceperunit x distance(getdistance)
-        return d.getRestaurant().getDeliveryPricePerUnit() * d.getDistance();
+        return restaurant.getDeliveryPricePerUnit() * distance;
     }
 
-    public double getTotalPrice(Delivery d){
+    public double getTotalPrice(){
     // gettotalprice() = getdishesprice + getriderrevenue()
-        return d.getDishesPrice(d) + d.getRiderRevenue(d);
+        return getDishesPrice() + getRiderRevenue();
     }
 
 }

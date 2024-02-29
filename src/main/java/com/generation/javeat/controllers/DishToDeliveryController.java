@@ -80,7 +80,7 @@ public class DishToDeliveryController {
         // Converte l'entità salvata in un DTO da restituire come risposta
         //dishToDeliveryDtoWFull saveddishToDeliveryDto = rConv.dishToDeliveryToDtoWFull(saveddishToDelivery);
 
-        return new ResponseEntity<String>("DishToDelivery was created successfully, please login.", HttpStatus.CREATED);
+        return new ResponseEntity<String>("DishToDelivery was created successfully.", HttpStatus.CREATED);
     }
 
     /**

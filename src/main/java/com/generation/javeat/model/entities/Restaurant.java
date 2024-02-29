@@ -1,6 +1,5 @@
 package com.generation.javeat.model.entities;
 
-import java.time.LocalTime;
 import java.util.List;
 import java.util.Set;
 
@@ -78,11 +77,5 @@ public class Restaurant {
             throw new EntityException("deliveryPricePerUnit non puo essere minore di 0, hai inserito: " + deliveryPricePerUnit);
         }
         this.deliveryPricePerUnit = deliveryPricePerUnit;
-    }
-
-    public boolean isOpen(){
-        LocalTime currentTime = LocalTime.now();
-        int currentHour = currentTime.getHour();
-        return (currentHour >= openingHour && currentHour < closingHour);
     }
 }

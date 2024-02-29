@@ -79,7 +79,7 @@ public class MenuController {
         // Converte l'entità salvata in un DTO da restituire come risposta
         //MenuDtoWFull savedMenuDto = rConv.MenuToDtoWFull(savedmenu);
 
-        return new ResponseEntity<String>("Menu was created successfully, please login.", HttpStatus.CREATED);
+        return new ResponseEntity<String>("Menu was created successfully.", HttpStatus.CREATED);
     }
 
     /**

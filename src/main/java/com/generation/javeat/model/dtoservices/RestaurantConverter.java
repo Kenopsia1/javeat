@@ -1,5 +1,7 @@
 package com.generation.javeat.model.dtoservices;
 
+import java.time.LocalTime;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,6 +60,7 @@ public class RestaurantConverter {
                 .foodTypes(e.getFoodTypes())
                 .deliveries(e.getDeliveries())
                 .menu(e.getMenu())
+                .isOpen(isOpen(e))
                 .build();
     }
 
@@ -79,5 +82,11 @@ public class RestaurantConverter {
         restaurant.setPositionX(dto.getPositionX());
         restaurant.setPositionY(dto.getPositionY());
         return restaurant;
+    }
+
+    private boolean isOpen(Restaurant r) {
+        LocalTime closing = LocalTime.of(r.getClosingHour(), 0);
+        LocalTime opening = LocalTime.of(r.getOpeningHour(), 0);
+        return LocalTime.now().isBefore(closing) && LocalTime.now().isAfter(opening);
     }
 }

@@ -43,9 +43,9 @@ public class DishToDelivery {
     @JoinColumn(name = "delivery_id")
     private Delivery delivery;
  
-    public double getPrice(DishToDelivery dtd){
+    public double getPrice(){
     // getPrice() = price x quantity
-        return dtd.getQuantity()*dtd.getDish().getPrice();
+        return quantity*dish.getPrice();
     }
 
     public void setQuantity(int quantity) {

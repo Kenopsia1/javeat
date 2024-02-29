@@ -43,19 +43,6 @@ public class DeliveryController {
     }
 
     /**
-     * GET /deliveries/{id}/getdistance
-      * Restituisce la distanza tra il ristorante e l'utente.
-     * 
-     * @param id L'ID del delivery da ottenere.
-     * @return ResponseEntity<Integer> - getDistance() del Delivery nel database.
-     */
-    @GetMapping("/deliveries/{id}/getdistance")
-    public ResponseEntity<?> getDistance(@PathVariable Integer id){
-        Delivery Delivery = deRepo.findById(id).orElseThrow();
-        return new ResponseEntity<Integer>(Delivery.getDistance(), HttpStatus.OK); 
-    }
-
-    /**
      * GET /deliveries/{id}
      * Restituisce un singolo delivery basato sull'ID fornito.
      * 
@@ -93,7 +80,7 @@ public class DeliveryController {
         // Converte l'entità salvata in un DTO da restituire come risposta
         //DeliveryDtoWFull savedDeliveryDto = rConv.DeliveryToDtoWFull(savedDelivery);
 
-        return new ResponseEntity<String>("Delivery was created successfully, please login.", HttpStatus.CREATED);
+        return new ResponseEntity<String>("Delivery was created successfully.", HttpStatus.CREATED);
     }
 
     /**

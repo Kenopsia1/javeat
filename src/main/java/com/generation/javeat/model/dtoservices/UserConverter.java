@@ -3,6 +3,7 @@ package com.generation.javeat.model.dtoservices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.generation.javeat.controllers.util.EntityException;
 import com.generation.javeat.model.dto.user.UserDtoLogin;
 import com.generation.javeat.model.dto.user.UserDtoR;
 import com.generation.javeat.model.dto.user.UserDtoWFull;
@@ -78,6 +79,10 @@ public class UserConverter {
         user.setPhone(dto.getPhone());
         user.setPositionX(dto.getPositionX());
         user.setPositionY(dto.getPositionY());
-        return user;
+        if(user.isValid())
+            return user;
+        else {
+            throw new EntityException("Errore nella registrazione, ricontrolla i dati inseriti!");
+        }
     }
 }

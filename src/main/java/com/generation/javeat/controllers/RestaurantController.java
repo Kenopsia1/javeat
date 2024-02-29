@@ -79,7 +79,7 @@ public class RestaurantController {
         // Converte l'entità salvata in un DTO da restituire come risposta
         //RestaurantDtoWFull savedRestaurantDto = rConv.restaurantToDtoWFull(savedRestaurant);
 
-        return new ResponseEntity<String>("Restaurant was created successfully, please login.", HttpStatus.CREATED);
+        return new ResponseEntity<String>("Restaurant was created successfully.", HttpStatus.CREATED);
     }
 
     /**

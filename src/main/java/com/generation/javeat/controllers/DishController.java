@@ -79,7 +79,7 @@ public class DishController {
         // Converte l'entità salvata in un DTO da restituire come risposta
         //DishDtoWFull savedDishDto = rConv.DishToDtoWFull(savedDish);
 
-        return new ResponseEntity<String>("Dish was created successfully, please login.", HttpStatus.CREATED);
+        return new ResponseEntity<String>("Dish was created successfully.", HttpStatus.CREATED);
     }
 
     /**
