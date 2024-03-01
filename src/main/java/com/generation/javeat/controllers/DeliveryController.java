@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.generation.javeat.model.dto.delivery.DeliveryDtoR;
+import com.generation.javeat.model.dto.delivery.DeliveryDtoRPost;
 import com.generation.javeat.model.dto.delivery.DeliveryDtoWFull;
 import com.generation.javeat.model.dtoservices.DeliveryConverter;
 import com.generation.javeat.model.entities.Delivery;
@@ -69,10 +70,10 @@ public class DeliveryController {
      * @return ResponseEntity - Risposta HTTP e messaggio di conferma della creazione.
      */
     @PostMapping("/deliveries/register")
-    public ResponseEntity<?> registerDelivery(@RequestBody DeliveryDtoWFull dto){
+    public ResponseEntity<?> registerDelivery(@RequestBody DeliveryDtoRPost dto){
         
         // Converti il DTO in un'entità delivery
-        Delivery newDeliverys = deConv.dtoWFullToDelivery(dto);
+        Delivery newDeliverys = deConv.dtoToDelivery(dto);
         // Salva il nuovo utente nel database
         @SuppressWarnings("unused")
         Delivery savedDelivery = deRepo.save(newDeliverys);
