@@ -77,8 +77,9 @@ public class User {
     }
 
     public boolean isValid(){
-        return id != null && isValidEmail(mail) &&
-                isValidPassword(password) && isValidPhone(phone) &&
+        return  isValidEmail(mail) &&
+                isValidPassword(password) && 
+                isValidPhone(phone) &&
                 positionX >= 0 && positionX <= 1000 &&
                 positionY >= 0 && positionX <= 1000;
     }

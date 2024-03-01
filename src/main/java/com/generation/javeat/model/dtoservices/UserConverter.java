@@ -80,9 +80,9 @@ public class UserConverter {
         user.setPositionX(dto.getPositionX());
         user.setPositionY(dto.getPositionY());
         if(user.isValid())
-            return user;
+        return user;
         else {
-            throw new EntityException("Errore nella registrazione, ricontrolla i dati inseriti!");
+        throw new EntityException("Errore nella registrazione, ricontrolla i dati inseriti!");
         }
     }
 }
