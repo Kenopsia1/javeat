@@ -133,4 +133,8 @@ public class DeliveryConverter {
         return (int) Math.sqrt(Math.pow(u.getPositionX() - r.getPositionX(), 2) 
         +                      Math.pow(u.getPositionY() - r.getPositionY(), 2));
     }
+
+    private boolean isInsideMaxDistance(Restaurant r, Delivery e){
+        return r.getMaxDeliveryDistance() < e.getDistance();
+    }
 }

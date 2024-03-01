@@ -41,7 +41,7 @@ public class User {
 
     
     public void setPositionX(int positionX){
-        if (positionX >= 0 && positionX <= 1000) {
+        if (positionX >= 0 && positionX <= 100) {
             this.positionX = positionX;
         } else {
             throw new EntityException("positionX deve essere compreso tra 0 e 1000, hai inserito: "+positionX);
@@ -49,7 +49,7 @@ public class User {
     }
 
     public void setPositionY(int positionY){
-        if (positionY >= 0 && positionY <= 1000) {
+        if (positionY >= 0 && positionY <= 100) {
             this.positionY = positionY;
         } else {
             throw new EntityException("positionY deve essere compreso tra 0 e 1000, hai inserito: "+positionY);
@@ -80,7 +80,7 @@ public class User {
         return  isValidEmail(mail) &&
                 isValidPassword(password) && 
                 isValidPhone(phone) &&
-                positionX >= 0 && positionX <= 1000 &&
-                positionY >= 0 && positionX <= 1000;
+                positionX >= 0 && positionX <= 100 &&
+                positionY >= 0 && positionX <= 100;
     }
 }
