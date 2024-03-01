@@ -77,8 +77,8 @@ public class UserConverter {
         user.setMail(dto.getMail());
         user.setPassword(dto.getPassword());
         user.setPhone(dto.getPhone());
-        user.setPositionX((int) dto.getPositionX());
-        user.setPositionY((int) dto.getPositionY());
+        user.setPositionX(dto.getPositionX());
+        user.setPositionY(dto.getPositionY());
         if(user.isValid())
             return user;
         else {
