@@ -40,21 +40,21 @@ public class User {
     private Set<Delivery> deliveries;
 
     
-    // public void setPositionX(int positionX){
-    //     if (positionX >= 0 && positionX <= 1000) {
-    //         this.positionX = positionX;
-    //     } else {
-    //         throw new EntityException("positionX deve essere compreso tra 0 e 1000, hai inserito: "+positionX);
-    //     }
-    // }
+    public void setPositionX(int positionX){
+        if (positionX >= 0 && positionX <= 1000) {
+            this.positionX = positionX;
+        } else {
+            throw new EntityException("positionX deve essere compreso tra 0 e 1000, hai inserito: "+positionX);
+        }
+    }
 
-    // public void setPositionY(int positionY){
-    //     if (positionY >= 0 && positionY <= 1000) {
-    //         this.positionY = positionY;
-    //     } else {
-    //         throw new EntityException("positionY deve essere compreso tra 0 e 1000, hai inserito: "+positionY);
-    //     }
-    // }
+    public void setPositionY(int positionY){
+        if (positionY >= 0 && positionY <= 1000) {
+            this.positionY = positionY;
+        } else {
+            throw new EntityException("positionY deve essere compreso tra 0 e 1000, hai inserito: "+positionY);
+        }
+    }
 
     public boolean isValidPassword(String password){
         Pattern pattern = Pattern.compile("^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@#$%^&+=!]).+$");
