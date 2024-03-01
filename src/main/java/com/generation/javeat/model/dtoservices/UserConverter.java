@@ -77,12 +77,12 @@ public class UserConverter {
         user.setMail(dto.getMail());
         user.setPassword(dto.getPassword());
         user.setPhone(dto.getPhone());
-        user.setPositionX(dto.getPositionX());
-        user.setPositionY(dto.getPositionY());
+        user.setPositionX((int) dto.getPositionX());
+        user.setPositionY((int) dto.getPositionY());
         if(user.isValid())
-        return user;
+            return user;
         else {
-        throw new EntityException("Errore nella registrazione, ricontrolla i dati inseriti!");
+            throw new EntityException("Errore nella registrazione, ricontrolla i dati inseriti!");
         }
     }
 }
