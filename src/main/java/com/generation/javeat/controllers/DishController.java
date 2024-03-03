@@ -1,7 +1,7 @@
 package com.generation.javeat.controllers;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -51,12 +51,15 @@ public class DishController {
      */
     @GetMapping("/dishes/{id}")
     public ResponseEntity<?> getDishById(@PathVariable Integer id){
-        Optional<Dish> dishOptional = dRepo.findById(id);
-        if (dishOptional.isPresent()) {
-            DishDtoWFull dishDto = dConv.dishToDtoWFull(dishOptional.get());
+        List<Dish> dishList = dRepo.findByMenuId(id);
+        
+        if (!dishList.isEmpty()) {
+            List<DishDtoWFull> dishDto = dishList.stream()
+                                    .map(dish -> dConv.dishToDtoWFull(dish))
+                                    .collect(Collectors.toList());
             return new ResponseEntity<>(dishDto, HttpStatus.OK);
         } else {
-            return new ResponseEntity<String>("Dish with ID " + id + " not found.", HttpStatus.NOT_FOUND);
+            return new ResponseEntity<String>("Dish with menu_id " + id + " not found.", HttpStatus.NOT_FOUND);
         }
     }
 
