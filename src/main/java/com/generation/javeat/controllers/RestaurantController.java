@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 // import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.generation.javeat.model.dto.restaurant.RestaurantDtoWDist;
 // import com.generation.javeat.model.dto.restaurant.RestaurantDtoR;
 import com.generation.javeat.model.dto.restaurant.RestaurantDtoWFull;
 import com.generation.javeat.model.dtoservices.RestaurantConverter;
@@ -54,6 +55,28 @@ public class RestaurantController {
         return rRepo.findAll()
                .stream()
                .map(e -> rConv.restaurantToDtoWFull(e))
+               .toList();
+    }
+
+    /**
+     * GET /restaurants/map/{id}
+      * Restituisce una lista di restaurants completa con la distanza.
+     * 
+     * @return AllRestaurants - L'entità Restaurants salvate nel database.
+     */
+    @GetMapping("/restaurants/map/{id}")
+    @Operation(description = "Invio una lista con tutti i restaurants con distanza dall'user loggato")
+    @ApiResponses(value = {
+        @ApiResponse
+        (
+            description = "Ho inviato tutti i restaurants",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = RestaurantDtoWFull.class))
+        )
+    })
+    public List<RestaurantDtoWDist> getAllRestaurantsWDistance(@PathVariable @Parameter(description = "l'id user, non vuoto, un numero positivo") Integer id_u){
+        return rRepo.findAll()
+               .stream()
+               .map(e -> rConv.restaurantDtoWDist(e, id_u))
                .toList();
     }
 
