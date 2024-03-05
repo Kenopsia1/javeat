@@ -73,10 +73,10 @@ public class RestaurantController {
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = RestaurantDtoWFull.class))
         )
     })
-    public List<RestaurantDtoWDist> getAllRestaurantsWDistance(@PathVariable @Parameter(description = "l'id user, non vuoto, un numero positivo") Integer id_u){
+    public List<RestaurantDtoWDist> getAllRestaurantsWDistance(@PathVariable @Parameter(description = "l'id user, non vuoto, un numero positivo") Integer id){
         return rRepo.findAll()
                .stream()
-               .map(e -> rConv.restaurantDtoWDist(e, id_u))
+               .map(e -> rConv.restaurantDtoWDist(e, id))
                .toList();
     }
 
