@@ -27,9 +27,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 
-// ERNESTO TE CANCELLO TUTTO
-@RestController //SALAME
-
+@RestController
 public class MenuController {
 
     @Autowired
@@ -44,14 +42,6 @@ public class MenuController {
      * @return AllDMenus - L'entità menus salvate nel database.
      */
     // @GetMapping("/menus")
-    // @Operation(description = "Invio una lista con tutti i menu")
-    // @ApiResponses(value = {
-    //     @ApiResponse
-    //     (
-    //         description = "Ho inviato tutti i menu",
-    //         content = @Content(mediaType = "application/json", schema = @Schema(implementation = MenuDtoWFull.class))
-    //     )
-    // })
     // public List<MenuDtoWFull> getAllMenus(){
     //      return mRepo.findAll()
     //             .stream()

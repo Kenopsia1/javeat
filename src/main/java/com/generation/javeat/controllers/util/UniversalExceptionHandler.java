@@ -10,20 +10,17 @@ import org.springframework.web.method.annotation.MethodArgumentTypeMismatchExcep
 public class UniversalExceptionHandler 
 {
      @ExceptionHandler(HttpMessageNotReadableException.class)
-    public ResponseEntity<?> gestisciEccezioneConversioneJson(HttpMessageNotReadableException e)//catch(HttpMessageNotReadableException e)
-    {
+    public ResponseEntity<?> gestisciEccezioneConversioneJson(HttpMessageNotReadableException e){//catch(HttpMessageNotReadableException e)
         return new ResponseEntity<String>("Errore di conversione da Json a Oggetto", HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
-    public ResponseEntity<?> gestisciEccezionPathVariable(MethodArgumentTypeMismatchException e)
-    {
+    public ResponseEntity<?> gestisciEccezionPathVariable(MethodArgumentTypeMismatchException e){
         return new ResponseEntity<String>("Errore nella path variable", HttpStatus.NOT_ACCEPTABLE);
     }
 
     @ExceptionHandler(EntityException.class)
-    public ResponseEntity<?> gestisciEccezioneEntita(EntityException e)//catch(HttpMessageNotReadableException e)
-    {
+    public ResponseEntity<?> gestisciEccezioneEntita(EntityException e){//catch(HttpMessageNotReadableException e)
         return new ResponseEntity<String>(e.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
