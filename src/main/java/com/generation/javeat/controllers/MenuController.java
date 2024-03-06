@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 // import com.generation.javeat.model.dto.menu.MenuDtoR;
 import com.generation.javeat.model.dto.menu.MenuDtoWFull;
-import com.generation.javeat.model.dto.restaurant.RestaurantDtoWFull;
 import com.generation.javeat.model.dtoservices.MenuConverter;
 // import com.generation.javeat.model.entities.Menu;
 import com.generation.javeat.model.repositories.MenuRepository;
