@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.generation.javeat.model.dto.menu.MenuDtoR;
-import com.generation.javeat.model.dto.menu.MenuDtoWFull;
+import com.generation.javeat.model.dto.menu.MenuDToWFull;
 import com.generation.javeat.model.entities.Menu;
 import com.generation.javeat.model.repositories.MenuRepository;
 @Service
@@ -32,8 +32,8 @@ public class MenuConverter {
      * @param e - L'oggetto Menu da convertire.
      * @return MenuDtoWFull - L'entità MenuDtoWFull risultante dalla conversione.
      */
-    public MenuDtoWFull menuToDtoWFull(Menu e){
-        return  MenuDtoWFull
+    public MenuDToWFull menuToDtoWFull(Menu e){
+        return  MenuDToWFull
                 .builder()
                 .id(e.getId())
                 .dishes(e.getDishes())
@@ -47,7 +47,7 @@ public class MenuConverter {
      * @param dto - Il DTO menuDtoWFull da convertire.
      * @return menu - L'entità menu risultante dalla conversione.
      */
-    public Menu dtoWFullToDMenu(MenuDtoWFull dto){
+    public Menu dtoWFullToDMenu(MenuDToWFull dto){
         Menu menu = new Menu();
         menu.setId(dto.getId());
         return menu;
