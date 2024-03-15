@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 // import com.generation.javeat.model.dto.menu.MenuDtoR;
-import com.generation.javeat.model.dto.menu.MenuDtoWFull;
+import com.generation.javeat.model.dto.menu.MenuDToWFull;
 import com.generation.javeat.model.dtoservices.MenuConverter;
 import com.generation.javeat.model.entities.Menu;
 import com.generation.javeat.model.repositories.MenuRepository;
@@ -62,14 +62,14 @@ public class MenuController {
         @ApiResponse
         (
             description = "Ho inviato tutti i menu",
-            content = @Content(mediaType = "application/json", schema = @Schema(implementation = MenuDtoWFull.class))
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = MenuDToWFull.class))
         )
     })
     public ResponseEntity<?> getMenuById(@PathVariable @Parameter(description = "l'id menu, non vuoto, un numero positivo") Integer id){
         Optional<Menu> menuOptional = mRepo.findById(id);
 
         if (menuOptional.isPresent()) {
-            MenuDtoWFull menuDto = mConv.menuToDtoWFull(menuOptional.get());
+            MenuDToWFull menuDto = mConv.menuToDtoWFull(menuOptional.get());
             return new ResponseEntity<>(menuDto, HttpStatus.OK);
         } else {
             return new ResponseEntity<String>("Menu with ID " + id + " not found.", HttpStatus.NOT_FOUND);
